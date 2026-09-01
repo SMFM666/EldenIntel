@@ -1701,20 +1701,24 @@ public sealed class LegacyGameCameraService : IDisposable
         var levelProgress = Math.Clamp((level + 20f) / 170f, 0.12f, 1f);
         var vigorProgress = Math.Clamp((vigor + 5f) / 65f, 0.12f, 1f);
         var progress = Math.Clamp(levelProgress * 0.65f + vigorProgress * 0.35f, 0.12f, 1f);
-        // Balance against the player's actual survivability rather than merely
-        // multiplying the boss's original HP. A DLC boss at a small percentage
-        // of its native health can still be wildly inappropriate for RL1.
-        var targetHp = maxHp * 6.5f + level * 25f;
+        // Auto Balance is intentionally deterministic across base-game and DLC
+        // bosses. The persistent spawn guard below owns this exact session HP
+        // even when Elden Ring replaces the initial ChrData after creation.
+        var targetHp = 2_000f;
         var hpMultiplier = 1f;
         var damageMultiplier = MathF.Pow(progress, 0.55f);
         var maxHitFraction = 0.40f;
-        var label = $"AUTO RL{level} VIG{vigor}";
+        var label = "AUTO • 2000 MAX";
         if (mode == EnemySpawnScalingMode.Cinematic)
         {
             targetHp = maxHp * 8f + level * 30f;
             damageMultiplier = Math.Clamp(damageMultiplier * 0.65f, 0.18f, 0.65f);
             maxHitFraction = 0.25f;
             label = $"CINEMATIC RL{level} VIG{vigor}";
+        }
+        else
+        {
+            damageMultiplier *= 0.5f;
         }
 
         var modules = memory.ReadUInt64(character + ChrInsModulesOffset);
