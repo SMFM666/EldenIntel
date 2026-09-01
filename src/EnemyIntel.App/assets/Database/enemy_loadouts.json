@@ -1,0 +1,405 @@
+﻿{
+    "version":  1,
+    "generatedAt":  "2026-06-30T05:46:06Z",
+    "policy":  "Verified ParamID loadouts only. Visual-only native equipment lives in enemy_visual_loadouts.json.",
+    "entries":  [
+                    {
+                        "paramId":  32510010,
+                        "name":  "Tree Sentinel (Limgrave)",
+                        "source":  "manual boss loadout override from user verification",
+                        "verified":  true,
+                        "slots":  [
+                                      {
+                                          "slot":  "Helmet",
+                                          "itemId":  270000,
+                                          "note":  "Tree Sentinel Helm"
+                                      },
+                                      {
+                                          "slot":  "Armor",
+                                          "itemId":  270100,
+                                          "note":  "Tree Sentinel Armor"
+                                      },
+                                      {
+                                          "slot":  "Gauntlets",
+                                          "itemId":  270200,
+                                          "note":  "Tree Sentinel Gauntlets"
+                                      },
+                                      {
+                                          "slot":  "Leggings",
+                                          "itemId":  270300,
+                                          "note":  "Tree Sentinel Greaves"
+                                      }
+                                  ]
+                    },
+                    {
+                        "paramId":  43005010,
+                        "name":  "Wandering Noble",
+                        "source":  "manual visual verification from locked target screenshot",
+                        "verified":  true,
+                        "slots":  [
+                                      {
+                                          "slot":  "Primary Left",
+                                          "itemId":  24000000,
+                                          "note":  "Torch"
+                                      }
+                                  ]
+                    },
+                    {
+                        "paramId":  43113906,
+                        "name":  "Soldier of Godrick (Boss)",
+                        "source":  "manual user verification: boss equipment list supplied 2026-07-06",
+                        "verified":  true,
+                        "slots":  [
+                                      {
+                                          "slot":  "Primary Right",
+                                          "itemId":  2040000,
+                                          "note":  "Lordsworn\u0027s Straight Sword"
+                                      },
+                                      {
+                                          "slot":  "Helmet",
+                                          "itemId":  1700000,
+                                          "note":  "Godrick Soldier Helm"
+                                      },
+                                      {
+                                          "slot":  "Armor",
+                                          "itemId":  1700100,
+                                          "note":  "Tree-and-Beast Surcoat"
+                                      },
+                                      {
+                                          "slot":  "Gauntlets",
+                                          "itemId":  1700200,
+                                          "note":  "Godrick Soldier Gauntlets"
+                                      },
+                                      {
+                                          "slot":  "Leggings",
+                                          "itemId":  1700300,
+                                          "note":  "Godrick Soldier Greaves"
+                                      }
+                                  ]
+                    },
+                    {
+                        "paramId":  43111110,
+                        "name":  "Godrick Soldier",
+                        "source":  "manual user verification: left-hand torch confirmed 2026-07-06",
+                        "verified":  true,
+                        "slots":  [
+                                      {
+                                          "slot":  "Primary Right",
+                                          "itemId":  2040000,
+                                          "note":  "Lordsworn\u0027s Straight Sword"
+                                      },
+                                      {
+                                          "slot":  "Primary Left",
+                                          "itemId":  24000000,
+                                          "note":  "Torch"
+                                      },
+                                      {
+                                          "slot":  "Helmet",
+                                          "itemId":  1700000,
+                                          "note":  "Godrick Soldier Helm"
+                                      },
+                                      {
+                                          "slot":  "Armor",
+                                          "itemId":  1700100,
+                                          "note":  "Tree-and-Beast Surcoat"
+                                      },
+                                      {
+                                          "slot":  "Gauntlets",
+                                          "itemId":  1700200,
+                                          "note":  "Godrick Soldier Gauntlets"
+                                      },
+                                      {
+                                          "slot":  "Leggings",
+                                          "itemId":  1700300,
+                                          "note":  "Godrick Soldier Greaves"
+                                      }
+                                  ]
+                    },
+                    {
+                        "paramId":  43114010,
+                        "name":  "Godrick Soldier",
+                        "source":  "manual user verification: right-hand equipment restored 2026-07-06",
+                        "verified":  true,
+                        "slots":  [
+                                      {
+                                          "slot":  "Primary Right",
+                                          "itemId":  16050000,
+                                          "note":  "Partisan"
+                                      },
+                                      {
+                                          "slot":  "Primary Left",
+                                          "itemId":  32300000,
+                                          "note":  "Lordsworn\u0027s Shield"
+                                      },
+                                      {
+                                          "slot":  "Helmet",
+                                          "itemId":  1700000,
+                                          "note":  "Godrick Soldier Helm"
+                                      },
+                                      {
+                                          "slot":  "Armor",
+                                          "itemId":  1700100,
+                                          "note":  "Tree-and-Beast Surcoat"
+                                      },
+                                      {
+                                          "slot":  "Gauntlets",
+                                          "itemId":  1700200,
+                                          "note":  "Godrick Soldier Gauntlets"
+                                      },
+                                      {
+                                          "slot":  "Leggings",
+                                          "itemId":  1700300,
+                                          "note":  "Godrick Soldier Greaves"
+                                      }
+                                  ]
+                    },
+                    {
+                        "paramId":  43112110,
+                        "name":  "Godrick Soldier",
+                        "source":  "manual user verification: left-hand torch confirmed 2026-07-06",
+                        "verified":  true,
+                        "slots":  [
+                                      {
+                                          "slot":  "Primary Right",
+                                          "itemId":  11040000,
+                                          "note":  "Warpick"
+                                      },
+                                      {
+                                          "slot":  "Primary Left",
+                                          "itemId":  24000000,
+                                          "note":  "Torch"
+                                      },
+                                      {
+                                          "slot":  "Helmet",
+                                          "itemId":  1700000,
+                                          "note":  "Godrick Soldier Helm"
+                                      },
+                                      {
+                                          "slot":  "Armor",
+                                          "itemId":  1700100,
+                                          "note":  "Tree-and-Beast Surcoat"
+                                      },
+                                      {
+                                          "slot":  "Gauntlets",
+                                          "itemId":  1700200,
+                                          "note":  "Godrick Soldier Gauntlets"
+                                      },
+                                      {
+                                          "slot":  "Leggings",
+                                          "itemId":  1700300,
+                                          "note":  "Godrick Soldier Greaves"
+                                      }
+                                  ]
+                    },
+                    {
+                        "paramId":  43532000,
+                        "name":  "Leyndell Knight - Archer",
+                        "source":  "verified equipment override: archer switches from greatbow to sword and Golden Greatshield",
+                        "verified":  true,
+                        "slots":  [
+                                      {
+                                          "slot":  "Primary Right",
+                                          "itemId":  3040000,
+                                          "note":  "Knight\u0027s Greatsword"
+                                      },
+                                      {
+                                          "slot":  "Primary Left",
+                                          "itemId":  32260000,
+                                          "note":  "Golden Greatshield"
+                                      },
+                                      {
+                                          "slot":  "Secondary Right",
+                                          "itemId":  42040000,
+                                          "note":  "Greatbow"
+                                      },
+                                      {
+                                          "slot":  "Primary Arrow",
+                                          "itemId":  51000000,
+                                          "note":  "Great Arrow"
+                                      },
+                                      {
+                                          "slot":  "Helmet",
+                                          "itemId":  1790000,
+                                          "note":  "Leyndell Knight Helm"
+                                      },
+                                      {
+                                          "slot":  "Armor",
+                                          "itemId":  1790100,
+                                          "note":  "Leyndell Knight Armor"
+                                      },
+                                      {
+                                          "slot":  "Gauntlets",
+                                          "itemId":  1790200,
+                                          "note":  "Leyndell Knight Gauntlets"
+                                      },
+                                      {
+                                          "slot":  "Leggings",
+                                          "itemId":  1790300,
+                                          "note":  "Leyndell Knight Greaves"
+                                      }
+                                  ]
+                    },
+                    {
+                        "paramId":  43532030,
+                        "name":  "Leyndell Knight - Archer",
+                        "source":  "verified equipment override: archer switches from greatbow to sword and Golden Greatshield",
+                        "verified":  true,
+                        "slots":  [
+                                      {
+                                          "slot":  "Primary Right",
+                                          "itemId":  3040000,
+                                          "note":  "Knight\u0027s Greatsword"
+                                      },
+                                      {
+                                          "slot":  "Primary Left",
+                                          "itemId":  32260000,
+                                          "note":  "Golden Greatshield"
+                                      },
+                                      {
+                                          "slot":  "Secondary Right",
+                                          "itemId":  42040000,
+                                          "note":  "Greatbow"
+                                      },
+                                      {
+                                          "slot":  "Primary Arrow",
+                                          "itemId":  51000000,
+                                          "note":  "Great Arrow"
+                                      },
+                                      {
+                                          "slot":  "Helmet",
+                                          "itemId":  1790000,
+                                          "note":  "Leyndell Knight Helm"
+                                      },
+                                      {
+                                          "slot":  "Armor",
+                                          "itemId":  1790100,
+                                          "note":  "Leyndell Knight Armor"
+                                      },
+                                      {
+                                          "slot":  "Gauntlets",
+                                          "itemId":  1790200,
+                                          "note":  "Leyndell Knight Gauntlets"
+                                      },
+                                      {
+                                          "slot":  "Leggings",
+                                          "itemId":  1790300,
+                                          "note":  "Leyndell Knight Greaves"
+                                      }
+                                  ]
+                    },
+                    {
+                        "paramId":  43532034,
+                        "name":  "Leyndell Knight - Archer (Leyndell)",
+                        "source":  "verified equipment override: archer switches from greatbow to sword and Golden Greatshield",
+                        "verified":  true,
+                        "slots":  [
+                                      {
+                                          "slot":  "Primary Right",
+                                          "itemId":  3040000,
+                                          "note":  "Knight\u0027s Greatsword"
+                                      },
+                                      {
+                                          "slot":  "Primary Left",
+                                          "itemId":  32260000,
+                                          "note":  "Golden Greatshield"
+                                      },
+                                      {
+                                          "slot":  "Secondary Right",
+                                          "itemId":  42040000,
+                                          "note":  "Greatbow"
+                                      },
+                                      {
+                                          "slot":  "Primary Arrow",
+                                          "itemId":  51000000,
+                                          "note":  "Great Arrow"
+                                      },
+                                      {
+                                          "slot":  "Helmet",
+                                          "itemId":  1790000,
+                                          "note":  "Leyndell Knight Helm"
+                                      },
+                                      {
+                                          "slot":  "Armor",
+                                          "itemId":  1790100,
+                                          "note":  "Leyndell Knight Armor"
+                                      },
+                                      {
+                                          "slot":  "Gauntlets",
+                                          "itemId":  1790200,
+                                          "note":  "Leyndell Knight Gauntlets"
+                                      },
+                                      {
+                                          "slot":  "Leggings",
+                                          "itemId":  1790300,
+                                          "note":  "Leyndell Knight Greaves"
+                                      }
+                                  ]
+                    },
+                    {
+                        "paramId":  43532050,
+                        "name":  "Leyndell Knight - Archer",
+                        "source":  "verified equipment override: archer switches from greatbow to sword and Golden Greatshield",
+                        "verified":  true,
+                        "slots":  [
+                                      {
+                                          "slot":  "Primary Right",
+                                          "itemId":  3040000,
+                                          "note":  "Knight\u0027s Greatsword"
+                                      },
+                                      {
+                                          "slot":  "Primary Left",
+                                          "itemId":  32260000,
+                                          "note":  "Golden Greatshield"
+                                      },
+                                      {
+                                          "slot":  "Secondary Right",
+                                          "itemId":  42040000,
+                                          "note":  "Greatbow"
+                                      },
+                                      {
+                                          "slot":  "Primary Arrow",
+                                          "itemId":  51000000,
+                                          "note":  "Great Arrow"
+                                      },
+                                      {
+                                          "slot":  "Helmet",
+                                          "itemId":  1790000,
+                                          "note":  "Leyndell Knight Helm"
+                                      },
+                                      {
+                                          "slot":  "Armor",
+                                          "itemId":  1790100,
+                                          "note":  "Leyndell Knight Armor"
+                                      },
+                                      {
+                                          "slot":  "Gauntlets",
+                                          "itemId":  1790200,
+                                          "note":  "Leyndell Knight Gauntlets"
+                                      },
+                                      {
+                                          "slot":  "Leggings",
+                                          "itemId":  1790300,
+                                          "note":  "Leyndell Knight Greaves"
+                                      }
+                                  ]
+                    },
+                    {
+                        "paramId":  46900008,
+                        "name":  "Manual enemy equipment override",
+                        "source":  "manual held-equipment override from user verification",
+                        "verified":  true,
+                        "slots":  [
+                                      {
+                                          "slot":  "Primary Right",
+                                          "itemId":  2060000,
+                                          "note":  "Ornamental Straight Sword"
+                                      },
+                                      {
+                                          "slot":  "Primary Left",
+                                          "itemId":  32090000,
+                                          "note":  "Golden Beast Crest Shield"
+                                      }
+                                  ]
+                    }
+                ]
+}

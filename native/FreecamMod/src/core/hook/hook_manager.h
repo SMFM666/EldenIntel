@@ -1,0 +1,38 @@
+#pragma once
+#include <vector>
+#include <functional>
+
+#include "MinHook.h"
+#include "ModUtils.h"
+
+#include "core/hook/code_cave.h"
+#include "utils/debug.h"
+
+class HookManager {
+    struct Hook {
+        void* target;
+        void* detour;
+        void** original;
+    };
+
+    std::vector<Hook> hooks;
+    bool isInitialized = false;
+
+    DaytimeUpdateCave daytimeUpdateCave;
+    FollowCameraCave followCameraCave;
+    CameraPositionCave cameraPositionCave;
+
+public:
+    HookManager() {};
+    ~HookManager() { Shutdown(); }
+
+	DaytimeUpdateCave& GetDaytimeUpdateCave() { return daytimeUpdateCave; }
+	FollowCameraCave& GetFollowCameraCave() { return followCameraCave; }
+	CameraPositionCave& GetCameraPositionCave() { return cameraPositionCave; }
+
+    bool Initialize();
+    bool Hook(void* target, void* detour, void** original);
+    bool EnableAll();
+    void RemoveAll();
+    void Shutdown();
+};

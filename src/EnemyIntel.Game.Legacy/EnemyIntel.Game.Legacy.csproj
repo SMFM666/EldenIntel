@@ -1,0 +1,10 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <UseWindowsForms>true</UseWindowsForms>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\EnemyIntel.Core\EnemyIntel.Core.csproj" />
+    <PackageReference Include="Pfim" Version="0.11.4" />
+  </ItemGroup>
+</Project>

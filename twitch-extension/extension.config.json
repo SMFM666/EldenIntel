@@ -1,0 +1,10 @@
+{
+  "extensionName": "Elden Intel Interact",
+  "extensionClientId": "uokh78i6q53c9ozc7fwex439qdx3li",
+  "version": "0.0.1",
+  "testingBaseUri": "https://localhost:8080/",
+  "videoOverlayViewerPath": "viewer.html",
+  "configPath": "config.html",
+  "liveConfigPath": "live-config.html",
+  "mode": "hosted-test"
+}

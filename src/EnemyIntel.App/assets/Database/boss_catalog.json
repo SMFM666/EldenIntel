@@ -1,0 +1,1472 @@
+﻿[
+    {
+        "Name":  "Abductor Virgin Duo",
+        "Model":  "c4470",
+        "NpcParamId":  44701034,
+        "ThinkParamId":  44701000,
+        "SuppressDeathRewards":  true
+    },
+    {
+        "Name":  "Adan, Thief of Fire",
+        "Model":  "c0000",
+        "NpcParamId":  523560020,
+        "ThinkParamId":  523560000,
+        "SuppressDeathRewards":  true
+    },
+    {
+        "Name":  "Alecto, Black Knife Ringleader",
+        "Model":  "c2100",
+        "NpcParamId":  21000034,
+        "ThinkParamId":  21000000,
+        "SuppressDeathRewards":  true
+    },
+    {
+        "Name":  "Ancestor Spirit",
+        "Model":  "c4670",
+        "NpcParamId":  46700964,
+        "ThinkParamId":  46700100,
+        "SuppressDeathRewards":  true
+    },
+    {
+        "Name":  "Ancient Dragon Lansseax #1",
+        "Model":  "c4510",
+        "NpcParamId":  45102272,
+        "ThinkParamId":  45100300,
+        "SuppressDeathRewards":  true
+    },
+    {
+        "Name":  "Ancient Dragon Lansseax #2",
+        "Model":  "c4510",
+        "NpcParamId":  45102272,
+        "ThinkParamId":  45100300,
+        "SuppressDeathRewards":  true
+    },
+    {
+        "Name":  "Ancient Dragon Senessax",
+        "Model":  "c4510",
+        "NpcParamId":  45102272,
+        "ThinkParamId":  45100300,
+        "SuppressDeathRewards":  true
+    },
+    {
+        "Name":  "Ancient Dragon-Man",
+        "Model":  "c4510",
+        "NpcParamId":  45102272,
+        "ThinkParamId":  45100300,
+        "SuppressDeathRewards":  true
+    },
+    {
+        "Name":  "Ancient Hero of Zamor (Altus Plateau)",
+        "Model":  "c7100",
+        "NpcParamId":  71000030,
+        "ThinkParamId":  71000000,
+        "SuppressDeathRewards":  true
+    },
+    {
+        "Name":  "Ancient Hero of Zamor (Mountaintops)",
+        "Model":  "c7100",
+        "NpcParamId":  71000030,
+        "ThinkParamId":  71000000,
+        "SuppressDeathRewards":  true
+    },
+    {
+        "Name":  "Ancient Hero of Zamor (Weeping Peninsula)",
+        "Model":  "c7100",
+        "NpcParamId":  71000030,
+        "ThinkParamId":  71000000,
+        "SuppressDeathRewards":  true
+    },
+    {
+        "Name":  "Astel, Naturalborn of the Void",
+        "Model":  "c4620",
+        "NpcParamId":  46202060,
+        "ThinkParamId":  46201000,
+        "SuppressDeathRewards":  true
+    },
+    {
+        "Name":  "Astel, Stars of Darkness",
+        "Model":  "c4620",
+        "NpcParamId":  46202060,
+        "ThinkParamId":  46201000,
+        "SuppressDeathRewards":  true
+    },
+    {
+        "Name":  "Battlemage Hugues",
+        "Model":  "c3704",
+        "NpcParamId":  37040054,
+        "ThinkParamId":  37040020,
+        "SuppressDeathRewards":  true
+    },
+    {
+        "Name":  "Bayle the Dread",
+        "Model":  "c5120",
+        "NpcParamId":  51200085,
+        "ThinkParamId":  51200000,
+        "SuppressDeathRewards":  true
+    },
+    {
+        "Name":  "Beast Clergyman / Maliketh, the Black Blade",
+        "Model":  "c2110",
+        "NpcParamId":  21100072,
+        "ThinkParamId":  21100000,
+        "SuppressDeathRewards":  true
+    },
+    {
+        "Name":  "Beastman of Farum Azula",
+        "Model":  "c3970",
+        "NpcParamId":  39700072,
+        "ThinkParamId":  39700000,
+        "SuppressDeathRewards":  true
+    },
+    {
+        "Name":  "Beastman of Farum Azula Duo",
+        "Model":  "c3970",
+        "NpcParamId":  39700072,
+        "ThinkParamId":  39700000,
+        "SuppressDeathRewards":  true
+    },
+    {
+        "Name":  "Bell-Bearing Hunter (Altus Plateau)",
+        "Model":  "c3100",
+        "NpcParamId":  31000020,
+        "ThinkParamId":  31001000,
+        "SuppressDeathRewards":  true
+    },
+    {
+        "Name":  "Bell-Bearing Hunter (Dragonbarrow)",
+        "Model":  "c3100",
+        "NpcParamId":  31000020,
+        "ThinkParamId":  31001000,
+        "SuppressDeathRewards":  true
+    },
+    {
+        "Name":  "Bell-Bearing Hunter (Liurnia)",
+        "Model":  "c3100",
+        "NpcParamId":  31000020,
+        "ThinkParamId":  31001000,
+        "SuppressDeathRewards":  true
+    },
+    {
+        "Name":  "Bell-Bearing Hunter (Stormhill)",
+        "Model":  "c3100",
+        "NpcParamId":  31000020,
+        "ThinkParamId":  31001000,
+        "SuppressDeathRewards":  true
+    },
+    {
+        "Name":  "Black Blade Kindred (Dragonbarrow)",
+        "Model":  "c4770",
+        "NpcParamId":  47701242,
+        "ThinkParamId":  47700000,
+        "SuppressDeathRewards":  true
+    },
+    {
+        "Name":  "Black Blade Kindred (Forbidden Lands)",
+        "Model":  "c4770",
+        "NpcParamId":  47700250,
+        "ThinkParamId":  47700000,
+        "SuppressDeathRewards":  true
+    },
+    {
+        "Name":  "Black Knife Assassin (Altus Plateau)",
+        "Model":  "c2100",
+        "NpcParamId":  21000034,
+        "ThinkParamId":  21000000,
+        "SuppressDeathRewards":  true
+    },
+    {
+        "Name":  "Black Knife Assassin (Liurnia)",
+        "Model":  "c2100",
+        "NpcParamId":  21000034,
+        "ThinkParamId":  21000000,
+        "SuppressDeathRewards":  true
+    },
+    {
+        "Name":  "Black Knife Assassin (Sainted Hero\u0027s Grave)",
+        "Model":  "c2100",
+        "NpcParamId":  21000034,
+        "ThinkParamId":  21000000,
+        "SuppressDeathRewards":  true
+    },
+    {
+        "Name":  "Black Knife Assassin (Stormhill)",
+        "Model":  "c2100",
+        "NpcParamId":  21000034,
+        "ThinkParamId":  21000000,
+        "SuppressDeathRewards":  true
+    },
+    {
+        "Name":  "Black Knight Edredd",
+        "Model":  "c5840",
+        "NpcParamId":  58400198,
+        "ThinkParamId":  58401000,
+        "SuppressDeathRewards":  true
+    },
+    {
+        "Name":  "Black Knight Garrew",
+        "Model":  "c5840",
+        "NpcParamId":  58400198,
+        "ThinkParamId":  58401000,
+        "SuppressDeathRewards":  true
+    },
+    {
+        "Name":  "Bloodhound Knight",
+        "Model":  "c4290",
+        "NpcParamId":  42909024,
+        "ThinkParamId":  42909000,
+        "SuppressDeathRewards":  true
+    },
+    {
+        "Name":  "Bloodhound Knight Darriwill",
+        "Model":  "c4290",
+        "NpcParamId":  42909024,
+        "ThinkParamId":  42909000,
+        "SuppressDeathRewards":  true
+    },
+    {
+        "Name":  "Bols, Carian Knight",
+        "Model":  "c4600",
+        "NpcParamId":  46000014,
+        "ThinkParamId":  46000000,
+        "SuppressDeathRewards":  true
+    },
+    {
+        "Name":  "Borealis the Freezing Fog",
+        "Model":  "c4503",
+        "NpcParamId":  45030050,
+        "ThinkParamId":  45030900,
+        "SuppressDeathRewards":  true
+    },
+    {
+        "Name":  "Cemetery Shade (Caelid)",
+        "Model":  "c3664",
+        "NpcParamId":  36640012,
+        "ThinkParamId":  36640912,
+        "SuppressDeathRewards":  true
+    },
+    {
+        "Name":  "Cemetery Shade (Liurnia)",
+        "Model":  "c3664",
+        "NpcParamId":  36640012,
+        "ThinkParamId":  36640912,
+        "SuppressDeathRewards":  true
+    },
+    {
+        "Name":  "Cemetery Shade (Weeping Peninsula)",
+        "Model":  "c3664",
+        "NpcParamId":  36640012,
+        "ThinkParamId":  36640912,
+        "SuppressDeathRewards":  true
+    },
+    {
+        "Name":  "Chief Bloodfiend",
+        "Model":  "c5081",
+        "NpcParamId":  50810990,
+        "ThinkParamId":  50810010,
+        "SuppressDeathRewards":  true
+    },
+    {
+        "Name":  "Cleanrot Knight",
+        "Model":  "c3800",
+        "NpcParamId":  38000056,
+        "ThinkParamId":  38000000,
+        "SuppressDeathRewards":  true
+    },
+    {
+        "Name":  "Cleanrot Knight Duo",
+        "Model":  "c3800",
+        "NpcParamId":  38000056,
+        "ThinkParamId":  38000000,
+        "SuppressDeathRewards":  true
+    },
+    {
+        "Name":  "Commander Gaius",
+        "Model":  "c3050",
+        "NpcParamId":  30500140,
+        "ThinkParamId":  30500940,
+        "SuppressDeathRewards":  true
+    },
+    {
+        "Name":  "Commander Niall",
+        "Model":  "c3050",
+        "NpcParamId":  30500140,
+        "ThinkParamId":  30500940,
+        "SuppressDeathRewards":  true
+    },
+    {
+        "Name":  "Commander O\u0027Neill",
+        "Model":  "c3050",
+        "NpcParamId":  30500140,
+        "ThinkParamId":  30500940,
+        "SuppressDeathRewards":  true
+    },
+    {
+        "Name":  "Count Ymir, Mother of Fingers",
+        "Model":  "c0000",
+        "NpcParamId":  524200190,
+        "ThinkParamId":  524200100,
+        "SuppressDeathRewards":  true
+    },
+    {
+        "Name":  "Crucible Knight",
+        "Model":  "c2500",
+        "NpcParamId":  25000014,
+        "ThinkParamId":  25000050,
+        "SuppressDeathRewards":  true
+    },
+    {
+        "Name":  "Crucible Knight \u0026 Crucible Knight Ordovis",
+        "Model":  "c2500",
+        "NpcParamId":  25000014,
+        "ThinkParamId":  25000050,
+        "SuppressDeathRewards":  true
+    },
+    {
+        "Name":  "Crucible Knight \u0026 Misbegotten Warrior",
+        "Model":  "c2500",
+        "NpcParamId":  25000014,
+        "ThinkParamId":  25000050,
+        "SuppressDeathRewards":  true
+    },
+    {
+        "Name":  "Crucible Knight Siluria",
+        "Model":  "c2500",
+        "NpcParamId":  25000014,
+        "ThinkParamId":  25000050,
+        "SuppressDeathRewards":  true
+    },
+    {
+        "Name":  "Crystalian",
+        "Model":  "c3350",
+        "NpcParamId":  33501154,
+        "ThinkParamId":  33501000,
+        "SuppressDeathRewards":  true
+    },
+    {
+        "Name":  "Crystalian Duo (Altus Plateau)",
+        "Model":  "c3350",
+        "NpcParamId":  33501154,
+        "ThinkParamId":  33501000,
+        "SuppressDeathRewards":  true
+    },
+    {
+        "Name":  "Crystalian Duo (Liurnia)",
+        "Model":  "c3350",
+        "NpcParamId":  33501154,
+        "ThinkParamId":  33501000,
+        "SuppressDeathRewards":  true
+    },
+    {
+        "Name":  "Curseblade Labirith",
+        "Model":  "c5040",
+        "NpcParamId":  50400088,
+        "ThinkParamId":  50400000,
+        "SuppressDeathRewards":  true
+    },
+    {
+        "Name":  "Dancer of Ranah",
+        "Model":  "c0000",
+        "NpcParamId":  524220083,
+        "ThinkParamId":  524220000,
+        "SuppressDeathRewards":  true
+    },
+    {
+        "Name":  "Death Knight (Fog Rift Catacombs)",
+        "Model":  "c5070",
+        "NpcParamId":  50700081,
+        "ThinkParamId":  50700010,
+        "SuppressDeathRewards":  true
+    },
+    {
+        "Name":  "Death Knight (Scorpion River Catacombs)",
+        "Model":  "c5070",
+        "NpcParamId":  50700081,
+        "ThinkParamId":  50700010,
+        "SuppressDeathRewards":  true
+    },
+    {
+        "Name":  "Death Rite Bird (Caelid)",
+        "Model":  "c4980",
+        "NpcParamId":  49801020,
+        "ThinkParamId":  49800100,
+        "SuppressDeathRewards":  true
+    },
+    {
+        "Name":  "Death Rite Bird (Charo\u0027s Hidden Grave)",
+        "Model":  "c4980",
+        "NpcParamId":  49801020,
+        "ThinkParamId":  49800100,
+        "SuppressDeathRewards":  true
+    },
+    {
+        "Name":  "Death Rite Bird (Consecrated Snowfield)",
+        "Model":  "c4980",
+        "NpcParamId":  49801020,
+        "ThinkParamId":  49800100,
+        "SuppressDeathRewards":  true
+    },
+    {
+        "Name":  "Death Rite Bird (Liurnia)",
+        "Model":  "c4980",
+        "NpcParamId":  49801020,
+        "ThinkParamId":  49800100,
+        "SuppressDeathRewards":  true
+    },
+    {
+        "Name":  "Death Rite Bird (Mountaintops)",
+        "Model":  "c4980",
+        "NpcParamId":  49801020,
+        "ThinkParamId":  49800100,
+        "SuppressDeathRewards":  true
+    },
+    {
+        "Name":  "Deathbird (Altus Plateau)",
+        "Model":  "c4980",
+        "NpcParamId":  49800033,
+        "ThinkParamId":  49800000,
+        "SuppressDeathRewards":  true
+    },
+    {
+        "Name":  "Deathbird (Liurnia)",
+        "Model":  "c4980",
+        "NpcParamId":  49800020,
+        "ThinkParamId":  49800000,
+        "SuppressDeathRewards":  true
+    },
+    {
+        "Name":  "Deathbird (Stormhill)",
+        "Model":  "c4980",
+        "NpcParamId":  49800010,
+        "ThinkParamId":  49800000,
+        "SuppressDeathRewards":  true
+    },
+    {
+        "Name":  "Deathbird (Weeping Peninsula)",
+        "Model":  "c4980",
+        "NpcParamId":  49800012,
+        "ThinkParamId":  49800000,
+        "SuppressDeathRewards":  true
+    },
+    {
+        "Name":  "Decaying Ekzykes",
+        "Model":  "c4501",
+        "NpcParamId":  45010040,
+        "ThinkParamId":  45010900,
+        "SuppressDeathRewards":  true
+    },
+    {
+        "Name":  "Demi-Human Chief Duo",
+        "Model":  "c4100",
+        "NpcParamId":  41000020,
+        "ThinkParamId":  41000000,
+        "SuppressDeathRewards":  true
+    },
+    {
+        "Name":  "Demi-Human Queen Gilika",
+        "Model":  "c4100",
+        "NpcParamId":  41000020,
+        "ThinkParamId":  41000000,
+        "SuppressDeathRewards":  true
+    },
+    {
+        "Name":  "Demi-Human Queen Maggie",
+        "Model":  "c4100",
+        "NpcParamId":  41000020,
+        "ThinkParamId":  41000000,
+        "SuppressDeathRewards":  true
+    },
+    {
+        "Name":  "Demi-Human Queen Margot",
+        "Model":  "c4100",
+        "NpcParamId":  41000020,
+        "ThinkParamId":  41000000,
+        "SuppressDeathRewards":  true
+    },
+    {
+        "Name":  "Demi-Human Queen Marigga",
+        "Model":  "c4100",
+        "NpcParamId":  41000020,
+        "ThinkParamId":  41000000,
+        "SuppressDeathRewards":  true
+    },
+    {
+        "Name":  "Demi-Human Swordmaster Onze",
+        "Model":  "c4100",
+        "NpcParamId":  41000020,
+        "ThinkParamId":  41000000,
+        "SuppressDeathRewards":  true
+    },
+    {
+        "Name":  "Divine Beast Dancing Lion (Ancient Ruins)",
+        "Model":  "c5210",
+        "NpcParamId":  52100088,
+        "ThinkParamId":  52100000,
+        "SuppressDeathRewards":  true
+    },
+    {
+        "Name":  "Divine Beast Dancing Lion (Belurat)",
+        "Model":  "c5210",
+        "NpcParamId":  52100088,
+        "ThinkParamId":  52100000,
+        "SuppressDeathRewards":  true
+    },
+    {
+        "Name":  "Draconic Tree Sentinel (Altus Plateau)",
+        "Model":  "c3250",
+        "NpcParamId":  32500072,
+        "ThinkParamId":  32500000,
+        "SuppressDeathRewards":  true
+    },
+    {
+        "Name":  "Dragonkin Soldier (Lake of Rot)",
+        "Model":  "c4650",
+        "NpcParamId":  46500960,
+        "ThinkParamId":  1,
+        "SuppressDeathRewards":  true
+    },
+    {
+        "Name":  "Dragonkin Soldier (Siofra River)",
+        "Model":  "c4650",
+        "NpcParamId":  46500960,
+        "ThinkParamId":  1,
+        "SuppressDeathRewards":  true
+    },
+    {
+        "Name":  "Dragonkin Soldier of Nokstella",
+        "Model":  "c4650",
+        "NpcParamId":  46500960,
+        "ThinkParamId":  1,
+        "SuppressDeathRewards":  true
+    },
+    {
+        "Name":  "Dragonlord Placidusax",
+        "Model":  "c4520",
+        "NpcParamId":  45200072,
+        "ThinkParamId":  45200000,
+        "SuppressDeathRewards":  true
+    },
+    {
+        "Name":  "Dryleaf Dane",
+        "Model":  "c0000",
+        "NpcParamId":  524250189,
+        "ThinkParamId":  544250000,
+        "SuppressDeathRewards":  true
+    },
+    {
+        "Name":  "Elemer of the Briar",
+        "Model":  "c3100",
+        "NpcParamId":  31000020,
+        "ThinkParamId":  31001000,
+        "SuppressDeathRewards":  true
+    },
+    {
+        "Name":  "Erdtree Avatar (East Liurnia)",
+        "Model":  "c4810",
+        "NpcParamId":  48100034,
+        "ThinkParamId":  48100000,
+        "SuppressDeathRewards":  true
+    },
+    {
+        "Name":  "Erdtree Avatar (Mountaintops)",
+        "Model":  "c4810",
+        "NpcParamId":  48100034,
+        "ThinkParamId":  48100000,
+        "SuppressDeathRewards":  true
+    },
+    {
+        "Name":  "Erdtree Avatar (Weeping Peninsula)",
+        "Model":  "c4810",
+        "NpcParamId":  48100034,
+        "ThinkParamId":  48100000,
+        "SuppressDeathRewards":  true
+    },
+    {
+        "Name":  "Erdtree Avatar (West Liurnia)",
+        "Model":  "c4810",
+        "NpcParamId":  48100034,
+        "ThinkParamId":  48100000,
+        "SuppressDeathRewards":  true
+    },
+    {
+        "Name":  "Erdtree Burial Watchdog (Altus Plateau)",
+        "Model":  "c4260",
+        "NpcParamId":  42600512,
+        "ThinkParamId":  42600900,
+        "SuppressDeathRewards":  true
+    },
+    {
+        "Name":  "Erdtree Burial Watchdog (Limgrave)",
+        "Model":  "c4260",
+        "NpcParamId":  42600512,
+        "ThinkParamId":  42600900,
+        "SuppressDeathRewards":  true
+    },
+    {
+        "Name":  "Erdtree Burial Watchdog (Liurnia)",
+        "Model":  "c4260",
+        "NpcParamId":  42600512,
+        "ThinkParamId":  42600900,
+        "SuppressDeathRewards":  true
+    },
+    {
+        "Name":  "Erdtree Burial Watchdog (Weeping Peninsula)",
+        "Model":  "c4260",
+        "NpcParamId":  42600512,
+        "ThinkParamId":  42600900,
+        "SuppressDeathRewards":  true
+    },
+    {
+        "Name":  "Erdtree Burial Watchdog Duo",
+        "Model":  "c4260",
+        "NpcParamId":  42600512,
+        "ThinkParamId":  42600900,
+        "SuppressDeathRewards":  true
+    },
+    {
+        "Name":  "Esgar, Priest of Blood",
+        "Model":  "c0000",
+        "NpcParamId":  523860000,
+        "ThinkParamId":  523860000,
+        "SuppressDeathRewards":  true
+    },
+    {
+        "Name":  "Fallingstar Beast (Altus Plateau)",
+        "Model":  "c4680",
+        "NpcParamId":  46801940,
+        "ThinkParamId":  46800000,
+        "SuppressDeathRewards":  true
+    },
+    {
+        "Name":  "Fallingstar Beast (Caelid)",
+        "Model":  "c4680",
+        "NpcParamId":  46801940,
+        "ThinkParamId":  46800000,
+        "SuppressDeathRewards":  true
+    },
+    {
+        "Name":  "Fallingstar Beast (Hinterland)",
+        "Model":  "c4680",
+        "NpcParamId":  46801940,
+        "ThinkParamId":  46800000,
+        "SuppressDeathRewards":  true
+    },
+    {
+        "Name":  "Fell Twin Duo",
+        "Model":  "c2140",
+        "NpcParamId":  21400114,
+        "ThinkParamId":  21400000,
+        "SuppressDeathRewards":  true
+    },
+    {
+        "Name":  "Fia\u0027s Champions",
+        "Model":  "c0000",
+        "NpcParamId":  523610066,
+        "ThinkParamId":  523610100,
+        "SuppressDeathRewards":  true
+    },
+    {
+        "Name":  "Fire Giant",
+        "Model":  "c4760",
+        "NpcParamId":  47600050,
+        "ThinkParamId":  47600900,
+        "SuppressDeathRewards":  true
+    },
+    {
+        "Name":  "Flying Dragon Agheel",
+        "Model":  "c4500",
+        "NpcParamId":  45008024,
+        "ThinkParamId":  45008000,
+        "SuppressDeathRewards":  true
+    },
+    {
+        "Name":  "Flying Dragon Greyll",
+        "Model":  "c4500",
+        "NpcParamId":  45008024,
+        "ThinkParamId":  45008000,
+        "SuppressDeathRewards":  true
+    },
+    {
+        "Name":  "Frenzied Duelist",
+        "Model":  "c3400",
+        "NpcParamId":  34000940,
+        "ThinkParamId":  34000000,
+        "SuppressDeathRewards":  true
+    },
+    {
+        "Name":  "Full-Grown Fallingstar Beast",
+        "Model":  "c4680",
+        "NpcParamId":  46801940,
+        "ThinkParamId":  46800000,
+        "SuppressDeathRewards":  true
+    },
+    {
+        "Name":  "Ghostflame Dragon (Belurat)",
+        "Model":  "c5860",
+        "NpcParamId":  58600080,
+        "ThinkParamId":  58600000,
+        "SuppressDeathRewards":  true
+    },
+    {
+        "Name":  "Ghostflame Dragon (Cerulean Coast)",
+        "Model":  "c5860",
+        "NpcParamId":  58600080,
+        "ThinkParamId":  58600000,
+        "SuppressDeathRewards":  true
+    },
+    {
+        "Name":  "Ghostflame Dragon (Scadu Altus)",
+        "Model":  "c5860",
+        "NpcParamId":  58600080,
+        "ThinkParamId":  58600000,
+        "SuppressDeathRewards":  true
+    },
+    {
+        "Name":  "Glintstone Dragon Adula #1",
+        "Model":  "c4502",
+        "NpcParamId":  45020022,
+        "ThinkParamId":  45020000,
+        "SuppressDeathRewards":  true
+    },
+    {
+        "Name":  "Glintstone Dragon Adula #2",
+        "Model":  "c4502",
+        "NpcParamId":  45020022,
+        "ThinkParamId":  45020000,
+        "SuppressDeathRewards":  true
+    },
+    {
+        "Name":  "Glintstone Dragon Smarag",
+        "Model":  "c4502",
+        "NpcParamId":  45020022,
+        "ThinkParamId":  45020000,
+        "SuppressDeathRewards":  true
+    },
+    {
+        "Name":  "Godefroy the Grafted",
+        "Model":  "c4750",
+        "NpcParamId":  47500014,
+        "ThinkParamId":  47500000,
+        "SuppressDeathRewards":  true
+    },
+    {
+        "Name":  "Godfrey, First Elden Lord \u0026 Hoarah Loux, Warrior",
+        "Model":  "c4720",
+        "NpcParamId":  47200134,
+        "ThinkParamId":  47200000,
+        "SuppressDeathRewards":  true
+    },
+    {
+        "Name":  "Godfrey, First Elden Lord (Golden)",
+        "Model":  "c4720",
+        "NpcParamId":  47200134,
+        "ThinkParamId":  47200000,
+        "SuppressDeathRewards":  true
+    },
+    {
+        "Name":  "Godrick the Grafted",
+        "Model":  "c4750",
+        "NpcParamId":  47500014,
+        "ThinkParamId":  47500000,
+        "SuppressDeathRewards":  true
+    },
+    {
+        "Name":  "Godskin Apostle (Altus Plateau)",
+        "Model":  "c3560",
+        "NpcParamId":  35600172,
+        "ThinkParamId":  35600100,
+        "SuppressDeathRewards":  true
+    },
+    {
+        "Name":  "Godskin Apostle (Dragonbarrow)",
+        "Model":  "c3560",
+        "NpcParamId":  35600172,
+        "ThinkParamId":  35600100,
+        "SuppressDeathRewards":  true
+    },
+    {
+        "Name":  "Godskin Duo",
+        "Model":  "c3560",
+        "NpcParamId":  35600172,
+        "ThinkParamId":  35600100,
+        "SuppressDeathRewards":  true
+    },
+    {
+        "Name":  "Godskin Noble (Volcano Manor)",
+        "Model":  "c3570",
+        "NpcParamId":  35700172,
+        "ThinkParamId":  35700100,
+        "SuppressDeathRewards":  true
+    },
+    {
+        "Name":  "Golden Hippopotamus",
+        "Model":  "c5010",
+        "NpcParamId":  50100098,
+        "ThinkParamId":  50100010,
+        "SuppressDeathRewards":  true
+    },
+    {
+        "Name":  "Grafted Scion",
+        "Model":  "c4690",
+        "NpcParamId":  46900014,
+        "ThinkParamId":  46900000,
+        "SuppressDeathRewards":  true
+    },
+    {
+        "Name":  "Grave Warden Duelist (Altus Plateau)",
+        "Model":  "c3400",
+        "NpcParamId":  34000034,
+        "ThinkParamId":  34000000,
+        "SuppressDeathRewards":  true
+    },
+    {
+        "Name":  "Grave Warden Duelist (Limgrave)",
+        "Model":  "c3400",
+        "NpcParamId":  34000034,
+        "ThinkParamId":  34000000,
+        "SuppressDeathRewards":  true
+    },
+    {
+        "Name":  "Great Wyrm Theodorix",
+        "Model":  "c4911",
+        "NpcParamId":  49110052,
+        "ThinkParamId":  49100952,
+        "SuppressDeathRewards":  true
+    },
+    {
+        "Name":  "Guardian Golem",
+        "Model":  "c3650",
+        "NpcParamId":  36500034,
+        "ThinkParamId":  36500000,
+        "SuppressDeathRewards":  true
+    },
+    {
+        "Name":  "Jagged Peak Drake",
+        "Model":  "c5580",
+        "NpcParamId":  55800084,
+        "ThinkParamId":  55800000,
+        "SuppressDeathRewards":  true
+    },
+    {
+        "Name":  "Jagged Peak Drake Duo",
+        "Model":  "c5580",
+        "NpcParamId":  55800084,
+        "ThinkParamId":  55800000,
+        "SuppressDeathRewards":  true
+    },
+    {
+        "Name":  "Jori, Elden Inquisitor",
+        "Model":  "c5312",
+        "NpcParamId":  53120086,
+        "ThinkParamId":  53122000,
+        "SuppressDeathRewards":  true
+    },
+    {
+        "Name":  "Kindred of Rot Duo",
+        "Model":  "c3810",
+        "NpcParamId":  38100062,
+        "ThinkParamId":  38100000,
+        "SuppressDeathRewards":  true
+    },
+    {
+        "Name":  "Knight of the Solitary Gaol",
+        "Model":  "c0000",
+        "NpcParamId":  524240080,
+        "ThinkParamId":  524240000,
+        "SuppressDeathRewards":  true
+    },
+    {
+        "Name":  "Lamenter",
+        "Model":  "c0000",
+        "NpcParamId":  524270084,
+        "ThinkParamId":  524270000,
+        "SuppressDeathRewards":  true
+    },
+    {
+        "Name":  "Leonine Misbegotten",
+        "Model":  "c3460",
+        "NpcParamId":  34600034,
+        "ThinkParamId":  34600020,
+        "SuppressDeathRewards":  true
+    },
+    {
+        "Name":  "Lichdragon Fortissax",
+        "Model":  "c4511",
+        "NpcParamId":  45110066,
+        "ThinkParamId":  45110000,
+        "SuppressDeathRewards":  true
+    },
+    {
+        "Name":  "Loretta, Knight of the Haligtree",
+        "Model":  "c3252",
+        "NpcParamId":  32520054,
+        "ThinkParamId":  32520054,
+        "SuppressDeathRewards":  true
+    },
+    {
+        "Name":  "Mad Pumpkin Head",
+        "Model":  "c4340",
+        "NpcParamId":  43401024,
+        "ThinkParamId":  43401000,
+        "SuppressDeathRewards":  true
+    },
+    {
+        "Name":  "Mad Pumpkin Head Duo",
+        "Model":  "c4340",
+        "NpcParamId":  43401024,
+        "ThinkParamId":  43401000,
+        "SuppressDeathRewards":  true
+    },
+    {
+        "Name":  "Magma Wyrm (Caelid)",
+        "Model":  "c4910",
+        "NpcParamId":  49100038,
+        "ThinkParamId":  49100000,
+        "SuppressDeathRewards":  true
+    },
+    {
+        "Name":  "Magma Wyrm (Volcano Manor)",
+        "Model":  "c4910",
+        "NpcParamId":  49100038,
+        "ThinkParamId":  49100000,
+        "SuppressDeathRewards":  true
+    },
+    {
+        "Name":  "Magma Wyrm Makar",
+        "Model":  "c4910",
+        "NpcParamId":  49100038,
+        "ThinkParamId":  49100000,
+        "SuppressDeathRewards":  true
+    },
+    {
+        "Name":  "Malenia, Blade of Miquella",
+        "Model":  "c2120",
+        "NpcParamId":  21200056,
+        "ThinkParamId":  21200000,
+        "SuppressDeathRewards":  true
+    },
+    {
+        "Name":  "Margit, the Fell Omen",
+        "Model":  "c2130",
+        "NpcParamId":  21300014,
+        "ThinkParamId":  21300000,
+        "SuppressDeathRewards":  true
+    },
+    {
+        "Name":  "Messmer the Impaler",
+        "Model":  "c5130",
+        "NpcParamId":  51300099,
+        "ThinkParamId":  51300000,
+        "SuppressDeathRewards":  true
+    },
+    {
+        "Name":  "Metyr, Mother of Fingers",
+        "Model":  "c5200",
+        "NpcParamId":  52000097,
+        "ThinkParamId":  52000000,
+        "SuppressDeathRewards":  true
+    },
+    {
+        "Name":  "Midra, Lord of the Frenzied Flame",
+        "Model":  "c5051",
+        "NpcParamId":  50510086,
+        "ThinkParamId":  50510000,
+        "SuppressDeathRewards":  true
+    },
+    {
+        "Name":  "Mimic Tear",
+        "Model":  "c0000",
+        "NpcParamId":  526100965,
+        "ThinkParamId":  90603100,
+        "SuppressDeathRewards":  true
+    },
+    {
+        "Name":  "Miranda the Blighted Bloom",
+        "Model":  "c4480",
+        "NpcParamId":  44800930,
+        "ThinkParamId":  44800000,
+        "SuppressDeathRewards":  true
+    },
+    {
+        "Name":  "Misbegotten Crusader",
+        "Model":  "c3450",
+        "NpcParamId":  34500034,
+        "ThinkParamId":  34500000,
+        "SuppressDeathRewards":  true
+    },
+    {
+        "Name":  "Mohg, Lord of Blood",
+        "Model":  "c4800",
+        "NpcParamId":  48000068,
+        "ThinkParamId":  48000000,
+        "SuppressDeathRewards":  true
+    },
+    {
+        "Name":  "Mohg, the Omen",
+        "Model":  "c4800",
+        "NpcParamId":  48000068,
+        "ThinkParamId":  48000000,
+        "SuppressDeathRewards":  true
+    },
+    {
+        "Name":  "Morgott, the Omen King",
+        "Model":  "c2130",
+        "NpcParamId":  21300014,
+        "ThinkParamId":  21300000,
+        "SuppressDeathRewards":  true
+    },
+    {
+        "Name":  "Necromancer Garris",
+        "Model":  "c0000",
+        "NpcParamId":  523760930,
+        "ThinkParamId":  523760000,
+        "SuppressDeathRewards":  true
+    },
+    {
+        "Name":  "Night\u0027s Cavalry (Altus Plateau)",
+        "Model":  "c3150",
+        "NpcParamId":  31500052,
+        "ThinkParamId":  31500052,
+        "SuppressDeathRewards":  true
+    },
+    {
+        "Name":  "Night\u0027s Cavalry (Bellum Highway)",
+        "Model":  "c3150",
+        "NpcParamId":  31500052,
+        "ThinkParamId":  31500052,
+        "SuppressDeathRewards":  true
+    },
+    {
+        "Name":  "Night\u0027s Cavalry (Caelid)",
+        "Model":  "c3150",
+        "NpcParamId":  31500052,
+        "ThinkParamId":  31500052,
+        "SuppressDeathRewards":  true
+    },
+    {
+        "Name":  "Night\u0027s Cavalry (Dragonbarrow)",
+        "Model":  "c3150",
+        "NpcParamId":  31500052,
+        "ThinkParamId":  31500052,
+        "SuppressDeathRewards":  true
+    },
+    {
+        "Name":  "Night\u0027s Cavalry (Forbidden Lands)",
+        "Model":  "c3150",
+        "NpcParamId":  31500052,
+        "ThinkParamId":  31500052,
+        "SuppressDeathRewards":  true
+    },
+    {
+        "Name":  "Night\u0027s Cavalry (Limgrave)",
+        "Model":  "c3150",
+        "NpcParamId":  31500052,
+        "ThinkParamId":  31500052,
+        "SuppressDeathRewards":  true
+    },
+    {
+        "Name":  "Night\u0027s Cavalry (Liurnia)",
+        "Model":  "c3150",
+        "NpcParamId":  31500052,
+        "ThinkParamId":  31500052,
+        "SuppressDeathRewards":  true
+    },
+    {
+        "Name":  "Night\u0027s Cavalry (Weeping Peninsula)",
+        "Model":  "c3150",
+        "NpcParamId":  31500052,
+        "ThinkParamId":  31500052,
+        "SuppressDeathRewards":  true
+    },
+    {
+        "Name":  "Night\u0027s Cavalry Duo",
+        "Model":  "c3150",
+        "NpcParamId":  31500052,
+        "ThinkParamId":  31500052,
+        "SuppressDeathRewards":  true
+    },
+    {
+        "Name":  "Nox Duo",
+        "Model":  "c3300",
+        "NpcParamId":  33000940,
+        "ThinkParamId":  33000000,
+        "SuppressDeathRewards":  true
+    },
+    {
+        "Name":  "Omenkiller",
+        "Model":  "c4820",
+        "NpcParamId":  48208034,
+        "ThinkParamId":  48200000,
+        "SuppressDeathRewards":  true
+    },
+    {
+        "Name":  "Omenkiller \u0026 Miranda, the Blighted Bloom",
+        "Model":  "c4820",
+        "NpcParamId":  48208034,
+        "ThinkParamId":  48200000,
+        "SuppressDeathRewards":  true
+    },
+    {
+        "Name":  "Onyx Lord (Altus Plateau)",
+        "Model":  "c3600",
+        "NpcParamId":  36000062,
+        "ThinkParamId":  36000062,
+        "SuppressDeathRewards":  true
+    },
+    {
+        "Name":  "Onyx Lord (Liurnia)",
+        "Model":  "c3600",
+        "NpcParamId":  36000062,
+        "ThinkParamId":  36000062,
+        "SuppressDeathRewards":  true
+    },
+    {
+        "Name":  "Patches",
+        "Model":  "c0000",
+        "NpcParamId":  523090038,
+        "ThinkParamId":  523090000,
+        "SuppressDeathRewards":  true
+    },
+    {
+        "Name":  "Perfumer Tricia \u0026 Misbegotten Warrior",
+        "Model":  "c3701",
+        "NpcParamId":  37010034,
+        "ThinkParamId":  37010000,
+        "SuppressDeathRewards":  true
+    },
+    {
+        "Name":  "Promised Consort Radahn",
+        "Model":  "c5220",
+        "NpcParamId":  52201089,
+        "ThinkParamId":  52200000,
+        "SuppressDeathRewards":  true
+    },
+    {
+        "Name":  "Putrescent Knight",
+        "Model":  "c5020",
+        "NpcParamId":  50200087,
+        "ThinkParamId":  50200000,
+        "SuppressDeathRewards":  true
+    },
+    {
+        "Name":  "Putrid Avatar (Caelid)",
+        "Model":  "c4811",
+        "NpcParamId":  48110056,
+        "ThinkParamId":  48110000,
+        "SuppressDeathRewards":  true
+    },
+    {
+        "Name":  "Putrid Avatar (Consecrated Snowfield)",
+        "Model":  "c4811",
+        "NpcParamId":  48110056,
+        "ThinkParamId":  48110000,
+        "SuppressDeathRewards":  true
+    },
+    {
+        "Name":  "Putrid Avatar (Dragonbarrow)",
+        "Model":  "c4811",
+        "NpcParamId":  48110056,
+        "ThinkParamId":  48110000,
+        "SuppressDeathRewards":  true
+    },
+    {
+        "Name":  "Putrid Crystalian Trio",
+        "Model":  "c3350",
+        "NpcParamId":  33501154,
+        "ThinkParamId":  33501000,
+        "SuppressDeathRewards":  true
+    },
+    {
+        "Name":  "Putrid Grave Warden Duelist",
+        "Model":  "c3400",
+        "NpcParamId":  34000952,
+        "ThinkParamId":  34000000,
+        "SuppressDeathRewards":  true
+    },
+    {
+        "Name":  "Putrid Tree Spirit (Caelid)",
+        "Model":  "c4640",
+        "NpcParamId":  46400014,
+        "ThinkParamId":  46400000,
+        "SuppressDeathRewards":  true
+    },
+    {
+        "Name":  "Radagon of the Golden Order \u0026 Elden Beast",
+        "Model":  "c2190",
+        "NpcParamId":  21900078,
+        "ThinkParamId":  21900000,
+        "SuppressDeathRewards":  true
+    },
+    {
+        "Name":  "Rakshasa",
+        "Model":  "c0000",
+        "NpcParamId":  524230091,
+        "ThinkParamId":  524230000,
+        "SuppressDeathRewards":  true
+    },
+    {
+        "Name":  "Ralva the Great Red Bear",
+        "Model":  "c4630",
+        "NpcParamId":  46300066,
+        "ThinkParamId":  46300000,
+        "SuppressDeathRewards":  true
+    },
+    {
+        "Name":  "Red Bear",
+        "Model":  "c0000",
+        "NpcParamId":  524210095,
+        "ThinkParamId":  524210000,
+        "SuppressDeathRewards":  true
+    },
+    {
+        "Name":  "Red Wolf of Radagon",
+        "Model":  "c3181",
+        "NpcParamId":  31810065,
+        "ThinkParamId":  31810000,
+        "SuppressDeathRewards":  true
+    },
+    {
+        "Name":  "Red Wolf of the Champion",
+        "Model":  "c3181",
+        "NpcParamId":  31810065,
+        "ThinkParamId":  31810000,
+        "SuppressDeathRewards":  true
+    },
+    {
+        "Name":  "Regal Ancestor Spirit",
+        "Model":  "c4670",
+        "NpcParamId":  46700964,
+        "ThinkParamId":  46700100,
+        "SuppressDeathRewards":  true
+    },
+    {
+        "Name":  "Rellana, Twin Moon Knight",
+        "Model":  "c5300",
+        "NpcParamId":  53000082,
+        "ThinkParamId":  53000000,
+        "SuppressDeathRewards":  true
+    },
+    {
+        "Name":  "Rennala, Queen of the Full Moon",
+        "Model":  "c2030",
+        "NpcParamId":  20300024,
+        "ThinkParamId":  20300000,
+        "SuppressDeathRewards":  true
+    },
+    {
+        "Name":  "Romina, Saint of the Bud",
+        "Model":  "c5030",
+        "NpcParamId":  50300094,
+        "ThinkParamId":  50300000,
+        "SuppressDeathRewards":  true
+    },
+    {
+        "Name":  "Royal Knight Loretta",
+        "Model":  "c3252",
+        "NpcParamId":  32520054,
+        "ThinkParamId":  32520054,
+        "SuppressDeathRewards":  true
+    },
+    {
+        "Name":  "Royal Revenant",
+        "Model":  "c4020",
+        "NpcParamId":  40208056,
+        "ThinkParamId":  40200000,
+        "SuppressDeathRewards":  true
+    },
+    {
+        "Name":  "Rugalea the Great Bear",
+        "Model":  "c4630",
+        "NpcParamId":  46300066,
+        "ThinkParamId":  46300000,
+        "SuppressDeathRewards":  true
+    },
+    {
+        "Name":  "Runebear",
+        "Model":  "c4630",
+        "NpcParamId":  46300066,
+        "ThinkParamId":  46300000,
+        "SuppressDeathRewards":  true
+    },
+    {
+        "Name":  "Rykard, Lord of Blashpemy",
+        "Model":  "c0000",
+        "NpcParamId":  523320038,
+        "ThinkParamId":  523320000,
+        "SuppressDeathRewards":  true
+    },
+    {
+        "Name":  "Sanguine Noble",
+        "Model":  "c3550",
+        "NpcParamId":  35500068,
+        "ThinkParamId":  35500000,
+        "SuppressDeathRewards":  true
+    },
+    {
+        "Name":  "Scadutree Avatar",
+        "Model":  "c5230",
+        "NpcParamId":  52300396,
+        "ThinkParamId":  52300000,
+        "SuppressDeathRewards":  true
+    },
+    {
+        "Name":  "Scaly Misbegotten",
+        "Model":  "c3451",
+        "NpcParamId":  34510034,
+        "ThinkParamId":  34510000,
+        "SuppressDeathRewards":  true
+    },
+    {
+        "Name":  "Sir Gideon Ofnir, the All-Knowing",
+        "Model":  "c0000",
+        "NpcParamId":  523240070,
+        "ThinkParamId":  523240100,
+        "SuppressDeathRewards":  true
+    },
+    {
+        "Name":  "Soldier of Godrick",
+        "Model":  "c4311",
+        "NpcParamId":  43111306,
+        "ThinkParamId":  43110200,
+        "SuppressDeathRewards":  true
+    },
+    {
+        "Name":  "Spirit-Caller Snail (Liurnia)",
+        "Model":  "c4140",
+        "NpcParamId":  41402920,
+        "ThinkParamId":  41400000,
+        "SuppressDeathRewards":  true
+    },
+    {
+        "Name":  "Spirit-Caller Snail (Mountaintops)",
+        "Model":  "c4140",
+        "NpcParamId":  41402950,
+        "ThinkParamId":  41400000,
+        "SuppressDeathRewards":  true
+    },
+    {
+        "Name":  "Starscourge Radahn",
+        "Model":  "c4730",
+        "NpcParamId":  47300040,
+        "ThinkParamId":  47300000,
+        "SuppressDeathRewards":  true
+    },
+    {
+        "Name":  "Stonedigger Troll (Altus Plateau)",
+        "Model":  "c4603",
+        "NpcParamId":  46030910,
+        "ThinkParamId":  46030100,
+        "SuppressDeathRewards":  true
+    },
+    {
+        "Name":  "Stonedigger Troll (Limgrave)",
+        "Model":  "c4603",
+        "NpcParamId":  46030910,
+        "ThinkParamId":  46030100,
+        "SuppressDeathRewards":  true
+    },
+    {
+        "Name":  "Stray Mimic Tear",
+        "Model":  "c4161",
+        "NpcParamId":  41610014,
+        "ThinkParamId":  41610000,
+        "SuppressDeathRewards":  true
+    },
+    {
+        "Name":  "Tibia Mariner (Altus Plateau)",
+        "Model":  "c4950",
+        "NpcParamId":  49500032,
+        "ThinkParamId":  49500932,
+        "SuppressDeathRewards":  true
+    },
+    {
+        "Name":  "Tibia Mariner (Charo\u0027s Hidden Grave)",
+        "Model":  "c4950",
+        "NpcParamId":  49500032,
+        "ThinkParamId":  49500932,
+        "SuppressDeathRewards":  true
+    },
+    {
+        "Name":  "Tibia Mariner (Liurnia)",
+        "Model":  "c4950",
+        "NpcParamId":  49500032,
+        "ThinkParamId":  49500932,
+        "SuppressDeathRewards":  true
+    },
+    {
+        "Name":  "Tibia Mariner (Stormhill)",
+        "Model":  "c4950",
+        "NpcParamId":  49500032,
+        "ThinkParamId":  49500932,
+        "SuppressDeathRewards":  true
+    },
+    {
+        "Name":  "Tree Sentinel (Hinterland #1)",
+        "Model":  "c3251",
+        "NpcParamId":  32511030,
+        "ThinkParamId":  32511000,
+        "SuppressDeathRewards":  true
+    },
+    {
+        "Name":  "Tree Sentinel (Hinterland #2)",
+        "Model":  "c3251",
+        "NpcParamId":  32511030,
+        "ThinkParamId":  32511000,
+        "SuppressDeathRewards":  true
+    },
+    {
+        "Name":  "Tree Sentinel (Limgrave)",
+        "Model":  "c3251",
+        "NpcParamId":  32511030,
+        "ThinkParamId":  32511000,
+        "SuppressDeathRewards":  true
+    },
+    {
+        "Name":  "Tree Sentinel Duo",
+        "Model":  "c3251",
+        "NpcParamId":  32511030,
+        "ThinkParamId":  32511000,
+        "SuppressDeathRewards":  true
+    },
+    {
+        "Name":  "Ulcerated Tree Spirit (Limgrave)",
+        "Model":  "c4640",
+        "NpcParamId":  46400014,
+        "ThinkParamId":  46400000,
+        "SuppressDeathRewards":  true
+    },
+    {
+        "Name":  "Ulcerated Tree Spirit (Mountaintops)",
+        "Model":  "c4640",
+        "NpcParamId":  46400014,
+        "ThinkParamId":  46400000,
+        "SuppressDeathRewards":  true
+    },
+    {
+        "Name":  "Ulcerated Tree Spirit (Volcano Manor)",
+        "Model":  "c4640",
+        "NpcParamId":  46400014,
+        "ThinkParamId":  46400000,
+        "SuppressDeathRewards":  true
+    },
+    {
+        "Name":  "Valiant Gargoyle Duo",
+        "Model":  "c4770",
+        "NpcParamId":  47701165,
+        "ThinkParamId":  47700000,
+        "SuppressDeathRewards":  true
+    },
+    {
+        "Name":  "Vyke, Knight of the Roundtable",
+        "Model":  "c0000",
+        "NpcParamId":  523360012,
+        "ThinkParamId":  523360000,
+        "SuppressDeathRewards":  true
+    },
+    {
+        "Name":  "Wormface",
+        "Model":  "c4570",
+        "NpcParamId":  45701072,
+        "ThinkParamId":  45700200,
+        "SuppressDeathRewards":  true
+    }
+]

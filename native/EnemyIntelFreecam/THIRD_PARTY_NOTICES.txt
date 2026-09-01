@@ -1,0 +1,24 @@
+EldenIntel clone appearance integration
+======================================
+
+This component incorporates and adapts portions of "Transmogrify Armor for
+ELDEN RING" version 2.4.12 and its elden-x dependency by Thomas Clark.
+
+Transmogrify Armor is licensed under the GNU General Public License version 3.
+The preserved upstream license text is available at:
+  release/reference-ertransmog-v2.4.12/LICENSE.txt
+
+elden-x is licensed under the MIT License. The preserved upstream license text
+is available at:
+  release/reference-elden-x/LICENSE.txt
+
+The integrated code is built into EnemyIntelFreecam.dll. EldenIntel does not
+ship or require a separate ertransmogrify DLL.
+
+EldenIntel character possession
+================================
+
+The character-control graph and restoration strategy in this component was
+independently adapted from "ER Enemy Control - Modern Clean-Room Rebuild" by
+AlpinDale, licensed under the Apache License, Version 2.0:
+  https://github.com/AlpinDale/er_enemy_control

@@ -1,0 +1,517 @@
+<Window x:Class="EnemyIntel.App.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:local="clr-namespace:EnemyIntel.App"
+        xmlns:shell="clr-namespace:System.Windows.Shell;assembly=PresentationFramework"
+        Title="EldenIntel" Width="882" Height="1124" MinWidth="820" MinHeight="760"
+        Background="{StaticResource CanvasBrush}" WindowStartupLocation="CenterScreen" WindowStyle="None" ToolTipOpening="MainWindow_ToolTipOpening">
+  <shell:WindowChrome.WindowChrome>
+    <shell:WindowChrome CaptionHeight="30" ResizeBorderThickness="6" GlassFrameThickness="0" CornerRadius="0"/>
+  </shell:WindowChrome.WindowChrome>
+  <Window.Resources>
+    <FontFamily x:Key="DisplayFont">./assets/Fonts/Milker.otf#Milker</FontFamily>
+    <FontFamily x:Key="PanelFont">./assets/Fonts/ZTNature-Bold.otf#ZT Nature</FontFamily>
+    <!-- Light controls must own their text colors. The application-wide
+         TextBlock style is white for the dark shell and must never bleed into
+         a light ComboBox popup or its selected-value presenter. -->
+    <DataTemplate x:Key="LightComboTextTemplate">
+      <TextBlock Foreground="#08090A" FontWeight="SemiBold" Text="{Binding}"/>
+    </DataTemplate>
+    <Style x:Key="LightComboItemStyle" TargetType="ComboBoxItem">
+      <Setter Property="MinHeight" Value="30"/>
+      <Setter Property="Padding" Value="9,5"/>
+      <Setter Property="Background" Value="#F2F2F2"/>
+      <Setter Property="Foreground" Value="#08090A"/>
+      <Setter Property="BorderThickness" Value="0"/>
+      <Setter Property="FontWeight" Value="SemiBold"/>
+      <Style.Triggers>
+        <Trigger Property="IsHighlighted" Value="True">
+          <Setter Property="Background" Value="#C9CDD2"/>
+          <Setter Property="Foreground" Value="#08090A"/>
+        </Trigger>
+        <Trigger Property="IsSelected" Value="True">
+          <Setter Property="Background" Value="#DCE1E6"/>
+          <Setter Property="Foreground" Value="#08090A"/>
+          <Setter Property="FontWeight" Value="Bold"/>
+        </Trigger>
+        <Trigger Property="IsEnabled" Value="False">
+          <Setter Property="Foreground" Value="#565A60"/>
+          <Setter Property="Opacity" Value="1"/>
+        </Trigger>
+      </Style.Triggers>
+    </Style>
+    <Style x:Key="LightComboBoxStyle" TargetType="ComboBox">
+      <Setter Property="Background" Value="#F2F2F2"/>
+      <Setter Property="Foreground" Value="#08090A"/>
+      <Setter Property="BorderBrush" Value="#8A8A8A"/>
+      <Setter Property="FontWeight" Value="SemiBold"/>
+      <Setter Property="ItemTemplate" Value="{StaticResource LightComboTextTemplate}"/>
+      <Setter Property="ItemContainerStyle" Value="{StaticResource LightComboItemStyle}"/>
+    </Style>
+    <Style TargetType="Border">
+      <EventSetter Event="Loaded" Handler="Border_Loaded"/>
+    </Style>
+    <Style TargetType="ToolTip">
+      <EventSetter Event="Opened" Handler="HoverToolTip_Opened"/>
+    </Style>
+    <Style x:Key="CommandDeckTab" TargetType="Button">
+      <Setter Property="Height" Value="36"/><Setter Property="Margin" Value="2,0,0,0"/><Setter Property="Padding" Value="0"/>
+      <Setter Property="Background" Value="#FFF4F4F5"/><Setter Property="Foreground" Value="#FF08090A"/><Setter Property="BorderBrush" Value="White"/><Setter Property="BorderThickness" Value="1"/>
+      <Setter Property="FontSize" Value="20"/>
+      <Setter Property="Template"><Setter.Value><ControlTemplate TargetType="Button">
+        <Border x:Name="Chrome" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="9" SnapsToDevicePixels="True">
+          <Grid ClipToBounds="True"><Border Height="14" VerticalAlignment="Top" CornerRadius="8,8,3,3" Opacity="0.45"><Border.Background><LinearGradientBrush StartPoint="0,0" EndPoint="0,1"><GradientStop Color="#CCFFFFFF"/><GradientStop Color="#00FFFFFF" Offset="1"/></LinearGradientBrush></Border.Background></Border><ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/></Grid>
+        </Border>
+        <ControlTemplate.Triggers><Trigger Property="IsMouseOver" Value="True"><Setter TargetName="Chrome" Property="Effect"><Setter.Value><DropShadowEffect Color="White" BlurRadius="10" ShadowDepth="0" Opacity="0.38"/></Setter.Value></Setter></Trigger><Trigger Property="IsPressed" Value="True"><Setter TargetName="Chrome" Property="Opacity" Value="0.72"/></Trigger></ControlTemplate.Triggers>
+      </ControlTemplate></Setter.Value></Setter>
+    </Style>
+    <Style x:Key="CircularCaptureButton" TargetType="Button">
+      <Setter Property="Width" Value="42"/><Setter Property="Height" Value="42"/><Setter Property="Padding" Value="0"/><Setter Property="Background" Value="#FFF4F4F5"/><Setter Property="Foreground" Value="#FF08090A"/><Setter Property="BorderBrush" Value="White"/><Setter Property="BorderThickness" Value="1.5"/>
+      <Setter Property="Template"><Setter.Value><ControlTemplate TargetType="Button"><Grid><Ellipse x:Name="Chrome" Fill="{TemplateBinding Background}" Stroke="{TemplateBinding BorderBrush}" StrokeThickness="{TemplateBinding BorderThickness}"/><Ellipse Margin="3" Stroke="#22000000" StrokeThickness="1"/><ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/></Grid><ControlTemplate.Triggers><Trigger Property="IsMouseOver" Value="True"><Setter TargetName="Chrome" Property="Effect"><Setter.Value><DropShadowEffect Color="White" BlurRadius="12" ShadowDepth="0" Opacity="0.48"/></Setter.Value></Setter></Trigger><Trigger Property="IsPressed" Value="True"><Setter TargetName="Chrome" Property="Opacity" Value="0.68"/></Trigger><Trigger Property="IsEnabled" Value="False"><Setter TargetName="Chrome" Property="Opacity" Value="0.4"/></Trigger></ControlTemplate.Triggers></ControlTemplate></Setter.Value></Setter>
+    </Style>
+  </Window.Resources>
+  <Grid>
+    <Grid.RowDefinitions><RowDefinition Height="30"/><RowDefinition Height="*"/></Grid.RowDefinitions>
+    <Border Grid.Row="0" Background="#0A0B0D" BorderBrush="#18FFFFFF" BorderThickness="0,0,0,1" MouseLeftButtonDown="TitleBar_MouseLeftButtonDown">
+      <Grid>
+        <TextBlock Margin="10,0,0,0" VerticalAlignment="Center" Foreground="#8F939A" FontSize="9" FontWeight="SemiBold" Text="ELDENINTEL"/>
+        <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
+          <Button shell:WindowChrome.IsHitTestVisibleInChrome="True" Width="38" Padding="0" BorderThickness="0" Background="Transparent" Foreground="#8F939A" Click="MinimizeButton_Click" Content="—"/>
+          <Button shell:WindowChrome.IsHitTestVisibleInChrome="True" Width="38" Padding="0" BorderThickness="0" Background="Transparent" Foreground="#8F939A" Click="MaximizeButton_Click" Content="□"/>
+          <Button shell:WindowChrome.IsHitTestVisibleInChrome="True" Width="38" Padding="0" BorderThickness="0" Background="Transparent" Foreground="#8F939A" Click="CloseButton_Click" Content="×"/>
+        </StackPanel>
+      </Grid>
+    </Border>
+  <Grid Grid.Row="1" Margin="14,10,14,14">
+    <Grid.RowDefinitions><RowDefinition Height="42"/><RowDefinition Height="6"/><RowDefinition Height="*"/></Grid.RowDefinitions>
+    <Grid Grid.Row="0">
+      <Grid.ColumnDefinitions><ColumnDefinition Width="Auto"/><ColumnDefinition Width="*"/></Grid.ColumnDefinitions>
+      <StackPanel Grid.Column="0" Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Center">
+        <Button x:Name="CaptureButton" Style="{StaticResource CircularCaptureButton}" Click="CaptureButton_Click" Margin="0,0,8,0" ToolTip="Capture portrait  •  Ctrl+1" ContentTemplate="{x:Null}">
+          <Grid Width="27" Height="27">
+            <Ellipse Stroke="#090A0B" StrokeThickness="2"/>
+            <Ellipse Width="11" Height="11" Stroke="#090A0B" StrokeThickness="2"/>
+            <Path Stroke="#090A0B" StrokeThickness="1.6" StrokeStartLineCap="Round" StrokeEndLineCap="Round" Data="M 13.5,1 L 13.5,7 M 24.3,7 L 19.2,10 M 24.3,20 L 19.2,17 M 13.5,26 L 13.5,20 M 2.7,20 L 7.8,17 M 2.7,7 L 7.8,10"/>
+          </Grid>
+        </Button>
+        <Border x:Name="AntiCheatPill" Height="42" Margin="0,0,8,0" Background="#1C1E22" BorderBrush="White" BorderThickness="1.5" CornerRadius="7" Padding="8,0" ToolTip="Memory-changing tools require a verified EAC-disabled session.">
+          <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+            <Ellipse x:Name="AntiCheatIndicator" Width="7" Height="7" Margin="0,0,7,0" Fill="#8F939A"/>
+            <StackPanel VerticalAlignment="Center">
+              <TextBlock Foreground="#8F939A" FontSize="8" FontWeight="Bold" Text="SESSION SAFETY"/>
+              <TextBlock x:Name="AntiCheatStatusText" Foreground="White" FontSize="10" FontWeight="Bold" Text="EAC UNVERIFIED"/>
+            </StackPanel>
+          </StackPanel>
+        </Border>
+        <Border Height="42" Background="#111316" BorderBrush="White" BorderThickness="1.5" CornerRadius="7" Padding="9,0" ToolTip="Live Elden Ring reader connection">
+          <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+            <Ellipse Width="8" Height="8" Margin="0,0,7,0">
+              <Ellipse.Style>
+                <Style TargetType="Ellipse"><Setter Property="Fill" Value="#FFFFFFFF"/><Setter Property="Effect" Value="{x:Null}"/><Style.Triggers><DataTrigger Binding="{Binding ConnectionLabel}" Value="LINKED"><Setter Property="Fill" Value="#FFFF3547"/><Setter Property="Effect"><Setter.Value><DropShadowEffect Color="#FFFF2338" BlurRadius="13" ShadowDepth="0" Opacity="0.95"/></Setter.Value></Setter></DataTrigger></Style.Triggers></Style>
+              </Ellipse.Style>
+            </Ellipse>
+            <TextBlock FontSize="11" FontWeight="Black">
+              <TextBlock.Style><Style TargetType="TextBlock"><Setter Property="Foreground" Value="#777C84"/><Setter Property="Text" Value="OFF AIR"/><Style.Triggers><DataTrigger Binding="{Binding ConnectionLabel}" Value="LINKED"><Setter Property="Foreground" Value="White"/><Setter Property="Text" Value="LIVE"/></DataTrigger><DataTrigger Binding="{Binding ConnectionLabel}" Value="LINKING"><Setter Property="Text" Value="LINKING"/></DataTrigger><DataTrigger Binding="{Binding ConnectionLabel}" Value="FAULT"><Setter Property="Text" Value="FAULT"/></DataTrigger></Style.Triggers></Style></TextBlock.Style>
+            </TextBlock>
+          </StackPanel>
+        </Border>
+      </StackPanel>
+      <Grid Grid.Column="1" Margin="4,0,0,0" VerticalAlignment="Stretch">
+        <Grid.ColumnDefinitions><ColumnDefinition Width="1.15*"/><ColumnDefinition Width="1.55*"/><ColumnDefinition Width="0.85*"/><ColumnDefinition Width="1.25*"/><ColumnDefinition Width="1.2*"/><ColumnDefinition Width="0.7*"/><ColumnDefinition Width="1.05*"/><ColumnDefinition Width="1.2*"/></Grid.ColumnDefinitions>
+        <Button x:Name="CameraDrawerTab" Grid.Column="0" Style="{StaticResource CommandDeckTab}" Click="CameraDrawerTab_Click" ToolTip="Camera"><local:TrackingText FontFamily="{StaticResource PanelFont}" FontSize="19" CharacterSpacing="0.45" Foreground="#08090A" Text="CAMERA"/></Button>
+        <Button x:Name="CamTrackDrawerTab" Grid.Column="1" Style="{StaticResource CommandDeckTab}" Click="CamTrackDrawerTab_Click" ToolTip="Camera Track"><local:TrackingText FontFamily="{StaticResource PanelFont}" FontSize="19" CharacterSpacing="0.45" Foreground="#08090A" Text="CAM TRACK"/></Button>
+        <Button x:Name="OptionsDrawerTab" Grid.Column="2" Style="{StaticResource CommandDeckTab}" Click="OptionsDrawerTab_Click" ToolTip="Tools"><local:TrackingText FontFamily="{StaticResource PanelFont}" FontSize="19" CharacterSpacing="0.45" Foreground="#08090A" Text="TOOLS"/></Button>
+        <Button x:Name="SpawnerDrawerTab" Grid.Column="3" Style="{StaticResource CommandDeckTab}" Click="SpawnerDrawerTab_Click" ToolTip="Enemy Spawner"><local:TrackingText FontFamily="{StaticResource PanelFont}" FontSize="19" CharacterSpacing="0.45" Foreground="#08090A" Text="SPAWNER"/></Button>
+        <Button x:Name="ControlDrawerTab" Grid.Column="4" Style="{StaticResource CommandDeckTab}" Click="ControlDrawerTab_Click" ToolTip="Character Control"><local:TrackingText FontFamily="{StaticResource PanelFont}" FontSize="18" CharacterSpacing="0.25" Foreground="#08090A" Text="CONTROL"/></Button>
+        <Button x:Name="PlaybackDrawerTab" Grid.Column="5" Style="{StaticResource CommandDeckTab}" Click="PlaybackDrawerTab_Click" ToolTip="Time Control"><local:TrackingText FontFamily="{StaticResource PanelFont}" FontSize="19" CharacterSpacing="0.45" Foreground="#08090A" Text="TIME"/></Button>
+        <Button x:Name="StreamDrawerTab" Grid.Column="6" Style="{StaticResource CommandDeckTab}" Click="StreamDrawerTab_Click" ToolTip="Twitch Stream Lab"><local:TrackingText FontFamily="{StaticResource PanelFont}" FontSize="18" CharacterSpacing="0.25" Foreground="#08090A" Text="STREAM"/></Button>
+        <Button x:Name="HotkeysDrawerTab" Grid.Column="7" Style="{StaticResource CommandDeckTab}" Click="HotkeysDrawerTab_Click" ToolTip="Hotkeys"><local:TrackingText FontFamily="{StaticResource PanelFont}" FontSize="18" CharacterSpacing="0.25" Foreground="#08090A" Text="HOTKEYS"/></Button>
+      </Grid>
+    </Grid>
+
+    <Grid Grid.Row="2">
+      <Grid.ColumnDefinitions><ColumnDefinition Width="1.12*"/><ColumnDefinition Width="12"/><ColumnDefinition Width="0.88*"/></Grid.ColumnDefinitions>
+      <Border Grid.Column="0" Style="{StaticResource Card}" Padding="0" ClipToBounds="True">
+        <Grid>
+          <Image Source="{Binding PortraitImage}"
+                 Stretch="UniformToFill"
+                 StretchDirection="Both"
+                 HorizontalAlignment="Center"
+                 VerticalAlignment="Center"
+                 Opacity="0.86"/>
+          <Rectangle Height="330" VerticalAlignment="Bottom" IsHitTestVisible="False">
+            <Rectangle.Fill>
+              <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+                <GradientStop Color="#00000000" Offset="0"/>
+                <GradientStop Color="#B8070809" Offset="0.32"/>
+                <GradientStop Color="#F3070809" Offset="0.62"/>
+              </LinearGradientBrush>
+            </Rectangle.Fill>
+          </Rectangle>
+          <StackPanel VerticalAlignment="Bottom" Margin="20">
+            <StackPanel Visibility="{Binding VitalsVisibility}" Margin="0,0,0,12">
+              <TextBlock Style="{StaticResource Eyebrow}" Text="VITALITY"/>
+              <Grid Height="28" Margin="0,5,0,10"><Border Background="#321B1D20" CornerRadius="4"/><ProgressBar Maximum="1" Value="{Binding HealthRatio, Mode=OneWay}" Foreground="#E8E8E9" Background="Transparent" BorderThickness="0"/><TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="#111214" FontSize="11" FontWeight="Bold" Text="{Binding HealthText}"/></Grid>
+              <TextBlock Style="{StaticResource Eyebrow}" Text="STANCE"/>
+              <Grid Height="22" Margin="0,5,0,0"><Border Background="#321B1D20" CornerRadius="4"/><ProgressBar Maximum="1" Value="{Binding PoiseRatio, Mode=OneWay}" Foreground="#74777D" Background="Transparent" BorderThickness="0"/><TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="10" Text="{Binding PoiseText}"/></Grid>
+            </StackPanel>
+            <Grid>
+              <Grid.ColumnDefinitions><ColumnDefinition/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions>
+              <Viewbox Grid.Column="0" Stretch="Uniform" StretchDirection="Both" HorizontalAlignment="Stretch" MaxHeight="96">
+                <TextBlock FontFamily="{StaticResource DisplayFont}" FontSize="60" Text="{Binding EnemyName}"/>
+              </Viewbox>
+              <Border Grid.Column="1" Visibility="{Binding DeadVisibility}" VerticalAlignment="Center" Margin="12,0,0,0" Padding="9,4" Background="#18FFFFFF" BorderBrush="#66FFFFFF" BorderThickness="1" CornerRadius="99">
+                <TextBlock Foreground="#E8E8E9" FontSize="10" FontWeight="Bold" Text="DEAD"/>
+              </Border>
+            </Grid>
+          </StackPanel>
+          <StackPanel Width="300" HorizontalAlignment="Center" VerticalAlignment="Center" Visibility="{Binding EmptyVisibility}">
+            <Image x:Name="EmptyStateMark" Width="270" Height="270" HorizontalAlignment="Center" Source="assets/Branding/EldenIntelEmblem.png" Stretch="Uniform" Opacity="0.9" RenderOptions.BitmapScalingMode="HighQuality"/>
+            <TextBlock Margin="0,8,0,0" HorizontalAlignment="Stretch" TextAlignment="Center" FontFamily="{StaticResource DisplayFont}" FontSize="24" Foreground="White" Text="AWAITING TARGET"/>
+            <TextBlock Margin="0,4,0,0" HorizontalAlignment="Stretch" TextAlignment="Center" Foreground="{StaticResource MutedBrush}" FontSize="14" Text="Lock onto an enemy in Elden Ring"/>
+          </StackPanel>
+        </Grid>
+      </Border>
+
+      <Grid Grid.Column="2">
+        <Grid.RowDefinitions><RowDefinition Height="Auto"/><RowDefinition Height="10"/><RowDefinition Height="Auto"/></Grid.RowDefinitions>
+        <Border Style="{StaticResource Card}">
+          <DockPanel>
+            <TextBlock DockPanel.Dock="Top" Style="{StaticResource Eyebrow}" FontFamily="{StaticResource DisplayFont}" FontSize="16" Text="EQUIPMENT" Margin="0,0,0,6"/>
+              <ItemsControl ItemsSource="{Binding Equipment}">
+                <ItemsControl.ItemTemplate><DataTemplate><Border Tag="ItemHover" Background="{StaticResource RaisedBrush}" CornerRadius="9" Padding="8" Margin="0,0,0,6" MouseEnter="ItemHover_MouseEnter" MouseLeave="ItemHover_MouseLeave"><Grid><Grid.ColumnDefinitions><ColumnDefinition Width="44"/><ColumnDefinition/></Grid.ColumnDefinitions><Border Width="38" Height="38" Background="#20FFFFFF" CornerRadius="6"><Image Source="{Binding ImagePath}" Stretch="Uniform"/></Border><StackPanel Grid.Column="1" Margin="8,0,0,0" VerticalAlignment="Center"><TextBlock FontSize="18" FontWeight="Bold" Text="{Binding Name}" TextTrimming="CharacterEllipsis"/><TextBlock Foreground="{StaticResource MutedBrush}" FontSize="15" Text="{Binding Slot}"/></StackPanel></Grid></Border></DataTemplate></ItemsControl.ItemTemplate>
+              </ItemsControl>
+          </DockPanel>
+        </Border>
+        <Border Grid.Row="2" Style="{StaticResource Card}">
+          <DockPanel>
+            <TextBlock DockPanel.Dock="Top" Style="{StaticResource Eyebrow}" FontFamily="{StaticResource DisplayFont}" FontSize="16" Text="POSSIBLE DROPS  •  BASE CHANCE" Margin="0,0,0,6"/>
+              <ItemsControl ItemsSource="{Binding Drops}">
+                <ItemsControl.ItemTemplate><DataTemplate><Border Tag="ItemHover" Background="Transparent" Margin="0,0,0,8" MouseEnter="ItemHover_MouseEnter" MouseLeave="ItemHover_MouseLeave"><Grid><Grid.ColumnDefinitions><ColumnDefinition Width="42"/><ColumnDefinition/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions><Border Width="34" Height="34" Background="#20FFFFFF" CornerRadius="6"><Image Source="{Binding ImagePath}"/></Border><StackPanel Grid.Column="1" Margin="8,0"><TextBlock FontSize="18" FontWeight="Bold" Text="{Binding Name}" TextTrimming="CharacterEllipsis"/><TextBlock Foreground="{StaticResource MutedBrush}" FontSize="15" Text="{Binding Category}"/></StackPanel><TextBlock Grid.Column="2" Margin="6,0,0,0" VerticalAlignment="Center" Foreground="{StaticResource GoldBrush}" FontFamily="Consolas" FontSize="15" FontWeight="SemiBold" Text="{Binding ChancePercent, StringFormat={}{0:0.###}%}"/></Grid></Border></DataTemplate></ItemsControl.ItemTemplate>
+              </ItemsControl>
+          </DockPanel>
+        </Border>
+      </Grid>
+    </Grid>
+
+  </Grid>
+    <Grid x:Name="OptionsDrawer" Grid.Row="1" Width="240" Height="760" Margin="0,52,0,0" HorizontalAlignment="Right" VerticalAlignment="Top" Panel.ZIndex="20" RenderTransformOrigin="0.5,0">
+      <Grid.RenderTransform><ScaleTransform x:Name="OptionsDrawerTransform" ScaleY="0"/></Grid.RenderTransform>
+      <Border Background="#FA0D0F11" BorderBrush="#38FFFFFF" BorderThickness="1" CornerRadius="10" Padding="12">
+        <StackPanel>
+          <TextBlock Style="{StaticResource Eyebrow}" Text="OPTIONS"/>
+          <TextBlock Margin="0,3,0,12" FontSize="22" FontWeight="Bold" Text="TOOLS"/>
+          <Button x:Name="DrawerDropRateButton" Height="42" Click="DrawerDropRateButton_Click" Content="DROP RATE ×10"/>
+          <Button x:Name="DrawerAiButton" Height="42" Margin="0,8,0,0" Click="DrawerAiButton_Click" Content="DISABLE AI"/>
+          <Button x:Name="DrawerNoDamageButton" Height="42" Margin="0,8,0,0" Click="DrawerNoDamageButton_Click" ToolTip="Prevent player HP loss while preserving hit reactions and blood effects" Content="NO PLAYER DAMAGE"/>
+          <Button x:Name="DrawerSteadyPlayerButton" Height="42" Margin="0,8,0,0" Click="DrawerSteadyPlayerButton_Click" ToolTip="Give only the local player extreme poise to suppress ordinary stagger and knockback while retaining hit and blood effects" Content="STEADY PLAYER"/>
+          <Button x:Name="DrawerWeaponHitboxButton" Height="42" Margin="0,8,0,0" Click="DrawerWeaponHitboxButton_Click" Content="WEAPON HITBOXES"/>
+          <Button x:Name="DrawerHideWorldButton" Height="42" Margin="0,8,0,0" Click="DrawerHideWorldButton_Click" ToolTip="Hide terrain and world objects while leaving characters visible" Content="HIDE WORLD"/>
+          <Button x:Name="HidePlayerButton" Height="42" Margin="0,8,0,0" Click="HidePlayerButton_Click" ToolTip="Hide the local player model from viewers for 20 seconds without changing enemy awareness" Content="HIDE PLAYER · 20s"/>
+          <Button x:Name="NinjaSetButton" Height="42" Margin="0,8,0,0" Click="NinjaSetButton_Click" ToolTip="Apply the player-only Transmogrify Ninja Set appearance" Content="NINJA SET"/>
+          <Button x:Name="ConfessorSetButton" Height="42" Margin="0,8,0,0" Click="ConfessorSetButton_Click" ToolTip="Apply the player-only Transmogrify Confessor Set appearance" Content="CONFESSOR SET"/>
+          <Button x:Name="DrawerDayCycleButton" Height="42" Margin="0,8,0,0" Click="DrawerDayCycleButton_Click" ToolTip="Toggle a slow, filming-friendly time-of-day cycle" Content="DAY CYCLE"/>
+          <Border Margin="0,12,0,0" BorderBrush="#45FFFFFF" BorderThickness="1,1,1,0"/>
+          <TextBlock Margin="0,10,0,5" Style="{StaticResource Eyebrow}" Text="ANIMATION LAB  •  EXPERIMENTAL"/>
+          <ComboBox x:Name="GesturePicker" Style="{StaticResource LightComboBoxStyle}" Height="38" Padding="8,0" SelectedIndex="0">
+            <ComboBoxItem Tag="7" Content="WAVE"/><ComboBoxItem Tag="23" Content="BECKON / TAUNT MOD"/>
+            <ComboBoxItem Tag="22" Content="POINT DOWN / FINGER MOD"/><ComboBoxItem Tag="70" Content="JUMP FOR JOY"/>
+            <ComboBoxItem Tag="71" Content="TRIUMPHANT DELIGHT"/><ComboBoxItem Tag="72" Content="FANCY SPIN"/>
+            <ComboBoxItem Tag="73" Content="FINGER SNAP"/><ComboBoxItem Tag="90" Content="PATCHES CROUCH"/>
+            <ComboBoxItem Tag="92" Content="REST"/><ComboBoxItem Tag="103" Content="ERUDITION"/>
+          </ComboBox>
+          <Button x:Name="PlayGestureButton" Height="38" Margin="0,7,0,0" Click="PlayGestureButton_Click" ToolTip="Trigger the selected in-game gesture. Custom replacements work when their animation mod is installed." Content="PLAY GESTURE"/>
+          <TextBlock x:Name="DrawerStatusText" Margin="0,9,0,15" Foreground="{StaticResource MutedBrush}" FontSize="10" TextWrapping="Wrap" Text="Open the drawer while Elden Ring is running."/>
+          <TextBlock Style="{StaticResource Eyebrow}" Text="SHORTCUTS"/>
+          <Grid Margin="0,9,0,0"><Grid.ColumnDefinitions><ColumnDefinition/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions><TextBlock Foreground="{StaticResource MutedBrush}" Text="HUD"/><TextBlock Grid.Column="1" FontFamily="Consolas" Text="F2"/></Grid>
+          <Grid Margin="0,6,0,0"><Grid.ColumnDefinitions><ColumnDefinition/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions><TextBlock Foreground="{StaticResource MutedBrush}" Text="Capture"/><TextBlock Grid.Column="1" FontFamily="Consolas" Text="Ctrl+1"/></Grid>
+          <Grid Margin="0,6,0,0"><Grid.ColumnDefinitions><ColumnDefinition/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions><TextBlock Foreground="{StaticResource MutedBrush}" Text="Pause"/><TextBlock Grid.Column="1" FontFamily="Consolas" Text="Ctrl+P"/></Grid>
+          <Grid Margin="0,6,0,0"><Grid.ColumnDefinitions><ColumnDefinition/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions><TextBlock Foreground="{StaticResource MutedBrush}" Text="Freecam"/><TextBlock Grid.Column="1" FontFamily="Consolas" Text="Ctrl+F6"/></Grid>
+          <Grid Margin="0,6,0,0"><Grid.ColumnDefinitions><ColumnDefinition/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions><TextBlock Foreground="{StaticResource MutedBrush}" Text="Day cycle"/><TextBlock Grid.Column="1" FontFamily="Consolas" Text="F4"/></Grid>
+        </StackPanel>
+      </Border>
+    </Grid>
+    <Grid x:Name="SpawnerDrawer" Grid.Row="1" Width="240" Height="520" Margin="0,52,0,0" HorizontalAlignment="Right" VerticalAlignment="Top" Panel.ZIndex="22" RenderTransformOrigin="0.5,0">
+      <Grid.RenderTransform><ScaleTransform x:Name="SpawnerDrawerTransform" ScaleY="0"/></Grid.RenderTransform>
+      <Border Background="#FA0D0F11" BorderBrush="#38FFFFFF" BorderThickness="1" CornerRadius="10" Padding="12">
+        <StackPanel>
+          <TextBlock Style="{StaticResource Eyebrow}" Text="WORLD"/>
+          <TextBlock Margin="0,3,0,11" FontSize="22" FontWeight="Bold" Text="ENEMY SPAWNER"/>
+          <TextBox x:Name="BossSearchBox" Height="38" Padding="10,7" Background="#F2F2F2" Foreground="#08090A" BorderBrush="#8A8A8A" FontWeight="Bold" TextChanged="BossSearchBox_TextChanged" ToolTip="Search all validated base-game and Shadow of the Erdtree boss encounters"/>
+          <TextBlock Margin="0,5,0,0" Foreground="{StaticResource MutedBrush}" FontSize="10" Text="Type a boss name to search 211 encounters."/>
+          <ListBox x:Name="BossSearchResults" MaxHeight="150" Margin="0,7,0,0" Visibility="Collapsed" Background="#FF111317" BorderBrush="#55FFFFFF" Foreground="White" SelectionChanged="BossSearchResults_SelectionChanged">
+            <ListBox.ItemTemplate><DataTemplate><TextBlock Padding="7,5" Foreground="White" FontWeight="SemiBold" TextWrapping="Wrap" Text="{Binding Name}"/></DataTemplate></ListBox.ItemTemplate>
+          </ListBox>
+          <Border Margin="0,8,0,0" Padding="9" Background="#16FFFFFF" BorderBrush="#45FFFFFF" BorderThickness="1" CornerRadius="6">
+            <TextBlock x:Name="SelectedBossText" Foreground="White" FontWeight="Bold" TextWrapping="Wrap" Text="NO BOSS SELECTED"/>
+          </Border>
+          <TextBlock Margin="0,12,0,5" Style="{StaticResource Eyebrow}" Text="SCALING"/>
+          <ComboBox x:Name="EnemySpawnScalingBox" Style="{StaticResource LightComboBoxStyle}" Height="38" Padding="9,0" FontWeight="Bold"/>
+          <Button x:Name="EnemySpawnMultipleButton" Height="36" Margin="0,12,0,0" Click="EnemySpawnMultipleButton_Click" Content="SPAWN MULTIPLE · OFF"/>
+          <StackPanel x:Name="EnemySpawnMultiplePanel" Visibility="Collapsed">
+            <Grid Margin="0,10,0,0"><Grid.ColumnDefinitions><ColumnDefinition/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions><TextBlock Style="{StaticResource Eyebrow}" Text="COUNT"/><TextBlock x:Name="EnemySpawnCountText" Grid.Column="1" FontFamily="Consolas" FontWeight="Bold" Text="2"/></Grid>
+            <Slider x:Name="EnemySpawnCountSlider" Margin="0,6,0,0" Minimum="2" Maximum="5" Value="2" TickFrequency="1" IsSnapToTickEnabled="True" ValueChanged="EnemySpawnCountSlider_ValueChanged"/>
+            <Border Margin="0,10,0,0" Padding="9" Background="#30FF5B5B" BorderBrush="#B0FF7676" BorderThickness="1" CornerRadius="6">
+              <TextBlock Foreground="#FFFFA3A3" FontSize="10" FontWeight="Bold" TextWrapping="Wrap" Text="WARNING · Multiple bosses can severely reduce performance, create AI/collision conflicts, or crash Elden Ring. Save first."/>
+            </Border>
+          </StackPanel>
+          <Button x:Name="EnemySpawnButton" Height="42" Margin="0,14,0,0" Click="EnemySpawnButton_Click" Content="SPAWN ONE · 7m AHEAD"/>
+          <TextBlock Margin="0,9,0,0" Foreground="{StaticResource MutedBrush}" FontSize="10" TextWrapping="Wrap" Text="Requests are serialized and multi-spawns are spread laterally to reduce immediate overlap. Offline and session-only."/>
+          <TextBlock x:Name="EnemySpawnerStatusText" Margin="0,9,0,0" Foreground="{StaticResource MutedBrush}" FontSize="10" TextWrapping="Wrap" Text="Ready when Elden Ring is running."/>
+        </StackPanel>
+      </Border>
+    </Grid>
+    <Grid x:Name="ControlDrawer" Grid.Row="1" Width="270" Height="465" Margin="0,52,0,0" HorizontalAlignment="Right" VerticalAlignment="Top" Panel.ZIndex="24" RenderTransformOrigin="0.5,0">
+      <Grid.RenderTransform><ScaleTransform x:Name="ControlDrawerTransform" ScaleY="0"/></Grid.RenderTransform>
+      <Border Background="#FF0D0F11" BorderBrush="#55FFFFFF" BorderThickness="1" CornerRadius="10" Padding="14">
+        <StackPanel>
+          <TextBlock Style="{StaticResource Eyebrow}" Text="DIRECT CHARACTER CONTROL"/>
+          <TextBlock Margin="0,3,0,7" FontSize="24" FontWeight="Bold" Text="POSSESSION"/>
+          <TextBlock Foreground="{StaticResource MutedBrush}" FontSize="11" TextWrapping="Wrap" Text="Take direct control of the enemy, NPC, or creature currently shown by Enemy Intel."/>
+          <Border Margin="0,14,0,0" Padding="10" Background="#18FFFFFF" BorderBrush="#55FFFFFF" BorderThickness="1" CornerRadius="7">
+            <StackPanel>
+              <TextBlock Style="{StaticResource Eyebrow}" Text="CURRENT SUBJECT"/>
+              <TextBlock x:Name="ControlTargetText" Margin="0,4,0,0" FontSize="18" FontWeight="Bold" TextWrapping="Wrap" Text="NO TARGET"/>
+            </StackPanel>
+          </Border>
+          <Button x:Name="PossessTargetButton" Height="46" Margin="0,14,0,0" Click="PossessTargetButton_Click" Content="POSSESS CURRENT TARGET"/>
+          <Button x:Name="ReleasePossessionButton" Height="42" Margin="0,8,0,0" Click="ReleasePossessionButton_Click" Content="RELEASE CONTROL"/>
+          <Border Margin="0,12,0,0" Padding="9" Background="#18FFFFFF" BorderBrush="#44FFFFFF" BorderThickness="1" CornerRadius="6">
+            <TextBlock Foreground="{StaticResource MutedBrush}" FontSize="10" TextWrapping="Wrap" Text="GAMEPAD ACTIONS PASS DIRECTLY TO THE CONTROLLED SUBJECT. F10 OR RELEASE CONTROL RETURNS TO THE PLAYER."/>
+          </Border>
+          <TextBlock x:Name="ControlStatusText" Margin="0,12,0,0" Foreground="{StaticResource MutedBrush}" FontSize="11" TextWrapping="Wrap" Text="Ready when Elden Ring is running."/>
+          <Border Margin="0,14,0,0" Padding="9" Background="#24FFB13B" BorderBrush="#80FFCC72" BorderThickness="1" CornerRadius="6">
+            <TextBlock Foreground="#FFFFD996" FontSize="10" FontWeight="Bold" TextWrapping="Wrap" Text="EXPERIMENTAL · Action availability varies by creature animation set. Release before fast travel, loading screens, or quitting."/>
+          </Border>
+        </StackPanel>
+      </Border>
+    </Grid>
+    <Grid x:Name="CameraDrawer" Grid.Row="1" Width="240" Height="1090" Margin="0,52,0,0" HorizontalAlignment="Right" VerticalAlignment="Top" Panel.ZIndex="21" RenderTransformOrigin="0.5,0">
+      <Grid.RenderTransform><ScaleTransform x:Name="CameraDrawerTransform" ScaleY="0"/></Grid.RenderTransform>
+      <Border Background="#FA0D0F11" BorderBrush="#38FFFFFF" BorderThickness="1" CornerRadius="10" Padding="12">
+        <StackPanel>
+          <TextBlock Style="{StaticResource Eyebrow}" Text="CAMERA"/>
+          <TextBlock Margin="0,3,0,11" FontSize="22" FontWeight="Bold" Text="CAMERA"/>
+          <StackPanel x:Name="CameraPrimaryPanel">
+          <Button x:Name="CameraFreecamButton" Height="42" Click="CameraFreecamButton_Click" Content="ENABLE FREECAM"/>
+          <Button x:Name="CameraAutoPauseButton" Height="36" Margin="0,8,0,0" Click="CameraAutoPauseButton_Click" ToolTip="Choose whether enabling freecam automatically pauses Elden Ring" Content="AUTO PAUSE · OFF"/>
+          <Button x:Name="CameraFocusButton" Height="42" Margin="0,8,0,0" Click="CameraFocusButton_Click" ToolTip="Pick the character nearest the center of the freecam view and follow it; press again to release" Content="PICK / RELEASE FOCUS"/>
+          <Button x:Name="CameraBodyCamButton" Height="42" Margin="0,8,0,0" Click="CameraBodyCamButton_Click" ToolTip="Mount the camera to the selected subject so position and outward-facing orientation follow its body" Content="BODY CAM"/>
+          <Button x:Name="CameraSubjectLockButton" Visibility="Collapsed" Click="CameraSubjectLockButton_Click" Content="SUBJECT LOCK"/>
+          <Grid Visibility="Collapsed">
+            <Grid.ColumnDefinitions><ColumnDefinition/><ColumnDefinition Width="8"/><ColumnDefinition/></Grid.ColumnDefinitions>
+            <Button x:Name="CameraAcquireSubjectButton" Height="38" Click="CameraAcquireSubjectButton_Click" ToolTip="Acquire the loaded character nearest the center of the freecam view" Content="PICK SUBJECT"/>
+            <Button x:Name="CameraAttachSubjectButton" Grid.Column="2" Height="38" Click="CameraAttachSubjectButton_Click" ToolTip="Follow the selected focus. Mouse orbits, wheel changes distance, Ctrl+Shift+wheel pans left/right, Space raises the camera, and Shift lowers it." Content="FOLLOW SUBJECT"/>
+          </Grid>
+          <Button x:Name="CameraAutoOrbitButton" Height="36" Margin="0,8,0,0" Click="CameraAutoOrbitButton_Click" ToolTip="Continuously orbit the current camera focus using the existing distance and height" Content="AUTO 360"/>
+          <Grid Margin="0,8,0,0" ToolTip="Adjust Auto 360 rotation speed live without disabling freecam">
+            <Grid.ColumnDefinitions><ColumnDefinition/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions>
+            <TextBlock Style="{StaticResource Eyebrow}" Text="AUTO 360 SPEED"/>
+            <TextBlock x:Name="CameraAutoOrbitSpeedText" Grid.Column="1" FontFamily="Consolas" FontWeight="Bold" Text="1.00x"/>
+          </Grid>
+          <Slider x:Name="CameraAutoOrbitSpeedSlider" Margin="0,5,0,0" Minimum="0.1" Maximum="4" Value="1" TickFrequency="0.1" IsSnapToTickEnabled="True" ValueChanged="CameraAutoOrbitSpeedSlider_ValueChanged" PreviewMouseLeftButtonUp="CameraAutoOrbitSpeedSlider_Commit"/>
+          <Button x:Name="CameraMovementShakeButton" Height="32" Margin="0,8,0,0" Click="CameraMovementShakeButton_Click" ToolTip="Add light handheld shake whose intensity follows the camera's physical movement speed" Content="MOVEMENT SHAKE"/>
+          <Button x:Name="CameraDialogueMotionButton" Height="36" Margin="0,8,0,0" Click="CameraDialogueMotionButton_Click" ToolTip="Arm slow automatic orbit, height, and dolly movement whenever the camera has a focus" Content="DIALOGUE MOTION"/>
+          <Border Margin="0,12,0,10" Height="1" Background="#28FFFFFF"/>
+          <TextBlock Style="{StaticResource Eyebrow}" Text="CONTROL MODE"/>
+          <Grid Margin="0,8,0,0" ToolTip="Route keyboard and mouse to either freecam or the player">
+            <Grid.RowDefinitions><RowDefinition/><RowDefinition Height="Auto"/></Grid.RowDefinitions>
+            <Grid.ColumnDefinitions><ColumnDefinition/><ColumnDefinition/></Grid.ColumnDefinitions>
+            <TextBlock FontWeight="Bold" Text="KBM · CAM"/>
+            <TextBlock Grid.Column="1" HorizontalAlignment="Right" FontWeight="Bold" Text="PLAYER"/>
+            <Slider x:Name="CameraKbmOwnerSlider" Grid.Row="1" Grid.ColumnSpan="2" Height="22" Minimum="0" Maximum="1" Value="0" TickFrequency="1" IsSnapToTickEnabled="True" ValueChanged="CameraKbmOwnerSlider_ValueChanged"/>
+          </Grid>
+          <Grid Margin="0,7,0,0" ToolTip="Route the controller to either freecam or the player">
+            <Grid.RowDefinitions><RowDefinition/><RowDefinition Height="Auto"/></Grid.RowDefinitions>
+            <Grid.ColumnDefinitions><ColumnDefinition/><ColumnDefinition/></Grid.ColumnDefinitions>
+            <TextBlock FontWeight="Bold" Text="CONTROLLER · CAM"/>
+            <TextBlock Grid.Column="1" HorizontalAlignment="Right" FontWeight="Bold" Text="PLAYER"/>
+            <Slider x:Name="CameraControllerOwnerSlider" Grid.Row="1" Grid.ColumnSpan="2" Height="22" Minimum="0" Maximum="1" Value="1" TickFrequency="1" IsSnapToTickEnabled="True" ValueChanged="CameraControllerOwnerSlider_ValueChanged"/>
+          </Grid>
+          <Grid Margin="0,8,0,0">
+            <Grid.ColumnDefinitions><ColumnDefinition/><ColumnDefinition Width="8"/><ColumnDefinition/></Grid.ColumnDefinitions>
+            <Button x:Name="CameraHudButton" Height="38" Click="CameraHudButton_Click" Content="HIDE HUD"/>
+            <Button x:Name="CameraInputButton" Grid.Column="2" Height="38" Click="CameraInputButton_Click" Content="BLOCK INPUT"/>
+          </Grid>
+          <Grid Margin="0,8,0,0">
+            <Grid.ColumnDefinitions><ColumnDefinition/><ColumnDefinition Width="8"/><ColumnDefinition/></Grid.ColumnDefinitions>
+            <Button x:Name="CameraLodButton" Height="38" Click="CameraLodButton_Click" Content="HIGHER LOD"/>
+            <Button Grid.Column="2" Height="38" Click="CameraResetButton_Click" Content="RESET CAM"/>
+          </Grid>
+          <Grid Margin="0,14,0,0">
+            <Grid.ColumnDefinitions><ColumnDefinition/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions>
+            <TextBlock Style="{StaticResource Eyebrow}" Text="MOVEMENT SPEED"/>
+            <TextBlock x:Name="CameraSpeedValueText" Grid.Column="1" FontFamily="Consolas" Text="10.0"/>
+          </Grid>
+          <Slider x:Name="CameraSpeedSlider" Margin="0,7,0,0" Minimum="0.5" Maximum="50" TickFrequency="0.5" IsSnapToTickEnabled="True" ValueChanged="CameraSpeedSlider_ValueChanged" PreviewMouseLeftButtonUp="CameraSpeedSlider_Commit"/>
+          <Border Margin="0,14,0,12" Height="1" Background="#28FFFFFF"/>
+          <TextBlock Style="{StaticResource Eyebrow}" Text="CAPTURE"/>
+          <Button Height="38" Margin="0,7,0,0" Click="CaptureButton_Click" Content="CAPTURE PORTRAIT · CTRL+1"/>
+          <TextBlock Margin="0,10,0,5" Style="{StaticResource Eyebrow}" Text="STORAGE LOCATION"/>
+          <TextBlock x:Name="CaptureStoragePathText" Foreground="{StaticResource MutedBrush}" FontSize="10" TextWrapping="Wrap" TextTrimming="CharacterEllipsis"/>
+          <Grid Margin="0,7,0,0">
+            <Grid.ColumnDefinitions><ColumnDefinition/><ColumnDefinition Width="6"/><ColumnDefinition/></Grid.ColumnDefinitions>
+            <Button Height="34" Click="CaptureStorageChooseButton_Click" Content="CHOOSE"/>
+            <Button Grid.Column="2" Height="34" Click="CaptureStorageOpenButton_Click" Content="OPEN FOLDER"/>
+          </Grid>
+          </StackPanel>
+          <StackPanel x:Name="CameraTrackPanel" Visibility="Collapsed">
+          <Border Margin="0,14,0,12" Height="1" Background="#28FFFFFF"/>
+          <Grid>
+            <Grid.ColumnDefinitions><ColumnDefinition/><ColumnDefinition Width="28"/><ColumnDefinition Width="34"/><ColumnDefinition Width="28"/></Grid.ColumnDefinitions>
+            <TextBlock VerticalAlignment="Center" Style="{StaticResource Eyebrow}" Text="CAM TRACK · WORLD"/>
+            <Button Grid.Column="1" Height="26" Padding="0" Click="CameraRemoveSlotButton_Click" Content="−" ToolTip="Remove a slot"/>
+            <TextBlock x:Name="CameraTrackCapacityText" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Consolas" FontWeight="SemiBold" Text="10"/>
+            <Button Grid.Column="3" Height="26" Padding="0" Click="CameraAddSlotButton_Click" Content="+" ToolTip="Add a slot"/>
+          </Grid>
+          <UniformGrid x:Name="CameraSlotGrid" Margin="0,9,0,0" Columns="5" Rows="2"/>
+          <Button x:Name="CameraCapturePointButton" Height="36" Margin="0,7,0,0" Click="CameraCapturePointButton_Click" Content="CAPTURE POINT 01"/>
+          <Grid Margin="0,9,0,0">
+            <Grid.ColumnDefinitions><ColumnDefinition/><ColumnDefinition Width="6"/><ColumnDefinition/><ColumnDefinition Width="6"/><ColumnDefinition/></Grid.ColumnDefinitions>
+            <Button x:Name="CameraPlayTrackButton" Height="36" Click="CameraPlayTrackButton_Click" Content="PLAY"/>
+            <Button x:Name="CameraLoopTrackButton" Grid.Column="2" Height="36" Click="CameraLoopTrackButton_Click" Content="LOOP" ToolTip="Continuously loop the camera track"/>
+            <Button Grid.Column="4" Height="36" Click="CameraClearTrackButton_Click" Content="CLEAR"/>
+          </Grid>
+          <Grid Margin="0,10,0,0">
+            <Grid.ColumnDefinitions><ColumnDefinition/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions>
+            <TextBlock x:Name="CameraPointEditorLabel" Style="{StaticResource Eyebrow}" Text="POINT 01 · INCOMING TRANSITION"/>
+            <TextBlock x:Name="CameraTransitionValueText" Grid.Column="1" FontFamily="Consolas" Text="3.0s"/>
+          </Grid>
+          <Slider x:Name="CameraTransitionSlider" Margin="0,6,0,0" Minimum="0.1" Maximum="12" Value="3" TickFrequency="0.1" IsSnapToTickEnabled="True" ValueChanged="CameraTransitionSlider_ValueChanged" PreviewMouseLeftButtonUp="CameraTransitionSlider_Commit"/>
+          <Grid Margin="0,10,0,0">
+            <Grid.ColumnDefinitions><ColumnDefinition/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions>
+            <TextBlock Style="{StaticResource Eyebrow}" Text="POINT HOLD"/>
+            <TextBlock x:Name="CameraHoldValueText" Grid.Column="1" FontFamily="Consolas" Text="0.0s"/>
+          </Grid>
+          <Slider x:Name="CameraHoldSlider" Margin="0,6,0,0" Minimum="0" Maximum="5" Value="0" TickFrequency="0.1" IsSnapToTickEnabled="True" ValueChanged="CameraHoldSlider_ValueChanged" PreviewMouseLeftButtonUp="CameraTrackSetting_Commit"/>
+          <TextBlock Margin="0,10,0,5" Style="{StaticResource Eyebrow}" Text="EASING"/>
+          <ComboBox x:Name="CameraEasingBox" Style="{StaticResource LightComboBoxStyle}" Height="34" SelectionChanged="CameraEasingBox_SelectionChanged"/>
+          <Grid Margin="0,10,0,0">
+            <Grid.ColumnDefinitions><ColumnDefinition/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions>
+            <TextBlock Style="{StaticResource Eyebrow}" Text="PATH SMOOTHING"/>
+            <TextBlock x:Name="CameraPathSmoothingText" Grid.Column="1" FontFamily="Consolas" Text="75%"/>
+          </Grid>
+          <Slider x:Name="CameraPathSmoothingSlider" Margin="0,6,0,0" Minimum="0" Maximum="1" Value="0.75" TickFrequency="0.05" IsSnapToTickEnabled="True" ValueChanged="CameraPathSmoothingSlider_ValueChanged" PreviewMouseLeftButtonUp="CameraTrackSetting_Commit"/>
+          <Border Margin="0,14,0,12" Height="1" Background="#28FFFFFF"/>
+          <TextBlock Style="{StaticResource Eyebrow}" Text="NAMED SHOTS"/>
+          <ComboBox x:Name="CameraTrackNameBox" Margin="0,6,0,0" Height="34" IsEditable="True" IsTextSearchEnabled="False" Background="#F2F2F2" Foreground="#111111" BorderBrush="#8A8A8A" FontWeight="SemiBold">
+            <ComboBox.ItemTemplate><DataTemplate><TextBlock Foreground="#111111" FontWeight="SemiBold" Text="{Binding}"/></DataTemplate></ComboBox.ItemTemplate>
+          </ComboBox>
+          <Grid Margin="0,7,0,0">
+            <Grid.ColumnDefinitions><ColumnDefinition/><ColumnDefinition Width="6"/><ColumnDefinition/></Grid.ColumnDefinitions>
+            <Button Height="34" Click="CameraSaveNamedTrackButton_Click" Content="SAVE"/>
+            <Button Grid.Column="2" Height="34" Click="CameraLoadNamedTrackButton_Click" Content="LOAD"/>
+          </Grid>
+          <Border Margin="0,14,0,12" Height="1" Background="#28FFFFFF"/>
+          <TextBlock Style="{StaticResource Eyebrow}" Text="MOTION FX · SELECTED POINT"/>
+          <ComboBox x:Name="CameraMotionEffectBox" Style="{StaticResource LightComboBoxStyle}" Margin="0,6,0,0" Height="34" SelectionChanged="CameraMotionSetting_Changed"/>
+          <Grid Margin="0,9,0,0"><Grid.ColumnDefinitions><ColumnDefinition/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions><TextBlock Style="{StaticResource Eyebrow}" Text="AMOUNT"/><TextBlock x:Name="CameraMotionAmountText" Grid.Column="1" FontFamily="Consolas" Text="0.25"/></Grid>
+          <Slider x:Name="CameraMotionAmountSlider" Margin="0,5,0,0" Minimum="0" Maximum="1" Value="0.25" TickFrequency="0.05" IsSnapToTickEnabled="True" ValueChanged="CameraMotionAmount_Changed" PreviewMouseLeftButtonUp="CameraMotionSetting_Commit"/>
+          <Grid Margin="0,8,0,0"><Grid.ColumnDefinitions><ColumnDefinition/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions><TextBlock Style="{StaticResource Eyebrow}" Text="SPEED"/><TextBlock x:Name="CameraMotionSpeedText" Grid.Column="1" FontFamily="Consolas" Text="3.0"/></Grid>
+          <Slider x:Name="CameraMotionSpeedSlider" Margin="0,5,0,0" Minimum="0.2" Maximum="10" Value="3" TickFrequency="0.1" IsSnapToTickEnabled="True" ValueChanged="CameraMotionSpeed_Changed" PreviewMouseLeftButtonUp="CameraMotionSetting_Commit"/>
+          <Grid Margin="0,8,0,0"><Grid.ColumnDefinitions><ColumnDefinition/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions><TextBlock Style="{StaticResource Eyebrow}" Text="FADE"/><TextBlock x:Name="CameraMotionFadeText" Grid.Column="1" FontFamily="Consolas" Text="0.25"/></Grid>
+          <Slider x:Name="CameraMotionFadeSlider" Margin="0,5,0,0" Minimum="0" Maximum="0.5" Value="0.25" TickFrequency="0.05" IsSnapToTickEnabled="True" ValueChanged="CameraMotionFade_Changed" PreviewMouseLeftButtonUp="CameraMotionSetting_Commit"/>
+          <Grid Margin="0,8,0,0"><Grid.ColumnDefinitions><ColumnDefinition/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions><TextBlock Style="{StaticResource Eyebrow}" Text="REPEATABLE SEED"/><TextBlock x:Name="CameraMotionSeedText" Grid.Column="1" FontFamily="Consolas" Text="1"/></Grid>
+          <Slider x:Name="CameraMotionSeedSlider" Margin="0,5,0,0" Minimum="1" Maximum="99" Value="1" TickFrequency="1" IsSnapToTickEnabled="True" ValueChanged="CameraMotionSeed_Changed" PreviewMouseLeftButtonUp="CameraMotionSetting_Commit"/>
+          </StackPanel>
+        </StackPanel>
+      </Border>
+    </Grid>
+    <Grid x:Name="PlaybackDrawer" Grid.Row="1" Width="240" Height="250" Margin="0,52,0,0" HorizontalAlignment="Right" VerticalAlignment="Top" Panel.ZIndex="19" RenderTransformOrigin="0.5,0">
+      <Grid.RenderTransform><ScaleTransform x:Name="PlaybackDrawerTransform" ScaleY="0"/></Grid.RenderTransform>
+      <Border Background="#FA0D0F11" BorderBrush="#38FFFFFF" BorderThickness="1" CornerRadius="10" Padding="12">
+        <StackPanel>
+          <TextBlock Style="{StaticResource Eyebrow}" Text="PLAYBACK"/>
+          <TextBlock Margin="0,3,0,11" FontSize="22" FontWeight="Bold" Text="TIME CONTROL"/>
+          <Button x:Name="PauseButton" Height="40" Click="PauseButton_Click" ToolTip="Real pause  •  Ctrl+P" Content="PAUSE"/>
+          <Grid Margin="0,14,0,0">
+            <Grid.ColumnDefinitions><ColumnDefinition/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions>
+            <TextBlock Style="{StaticResource Eyebrow}" Text="GAME SPEED"/>
+            <TextBlock x:Name="GameSpeedValueText" Grid.Column="1" FontFamily="Consolas" FontWeight="SemiBold" Text="1.00×"/>
+          </Grid>
+          <Slider x:Name="GameSpeedSlider" Margin="0,8,0,0" Minimum="0.05" Maximum="2" Value="1" TickFrequency="0.05" IsSnapToTickEnabled="True" ValueChanged="GameSpeedSlider_ValueChanged" PreviewMouseLeftButtonUp="GameSpeedSlider_Commit"/>
+          <Button x:Name="DrawerStepFrameButton" Height="40" Margin="0,14,0,0" Click="DrawerStepFrameButton_Click" Content="STEP FRAME"/>
+        </StackPanel>
+      </Border>
+    </Grid>
+    <Grid x:Name="StreamDrawer" Grid.Row="1" Width="340" Height="700" Margin="0,52,0,0" HorizontalAlignment="Right" VerticalAlignment="Top" Panel.ZIndex="24" RenderTransformOrigin="0.5,0">
+      <Grid.RenderTransform><ScaleTransform x:Name="StreamDrawerTransform" ScaleY="0"/></Grid.RenderTransform>
+      <Border Background="#FF0D0F11" BorderBrush="#58FFFFFF" BorderThickness="1" CornerRadius="10" Padding="14">
+        <StackPanel>
+          <TextBlock Style="{StaticResource Eyebrow}" Text="LIVE CONTROL"/>
+          <TextBlock Margin="0,3,0,12" FontSize="24" FontWeight="Bold" Text="STREAM EFFECTS"/>
+          <TextBlock Style="{StaticResource Eyebrow}" Text="RANDOM POOL · MANUAL TEST"/>
+          <UniformGrid Margin="0,8,0,0" Columns="2">
+            <Button x:Name="StreamFireButton" Height="50" Margin="0,0,5,0" Click="StreamFireButton_Click" Content="FIRE" ToolTip="Apply harmless visual fire effect 1600 through the native game-frame hook"/>
+            <Button x:Name="StreamSmolButton" Height="50" Margin="3,0" Click="StreamSmolButton_Click" Content="SMOL · 20s" ToolTip="Set all player model dimensions to 0.5 for 20 seconds"/>
+            <Button x:Name="StreamTickButton" Height="50" Margin="0,6,5,0" Click="StreamTickButton_Click" Content="DAMAGE TICK" ToolTip="Deal one spammable 2% maximum-health damage tick"/>
+            <Button x:Name="StreamHurtSethTestButton" Height="50" Margin="3,6,0,0" Click="StreamHurtSethTestButton_Click" Content="HURT SETH TEST" ToolTip="Broadcast the 20-second HURT SETH event to Twitch, mobile, and OBS viewers"/>
+            <Button x:Name="StreamInvisibleButton" Height="50" Margin="0,6,5,0" Click="StreamInvisibleButton_Click" Content="INVISIBLE · 20s" ToolTip="Hide the player character for 20 seconds, then safely restore the previous render style"/>
+            <Button x:Name="StreamAllyCloneButton" Height="50" Margin="3,6,0,0" Click="StreamAllyCloneButton_Click" Content="ALLY CLONE" ToolTip="Prototype control for SETH + SETH — friendly player doppelganger"/>
+            <Button x:Name="StreamEnemyCloneButton" Height="50" Margin="0,6,5,0" Click="StreamEnemyCloneButton_Click" Content="ENEMY CLONE" ToolTip="Prototype control for SETH VS SETH — hostile player doppelganger"/>
+          </UniformGrid>
+          <TextBlock x:Name="StreamEffectStatusText" Margin="0,8,0,0" Foreground="{StaticResource MutedBrush}" FontSize="11" TextWrapping="Wrap" Text="FIRE, SMOL, DAMAGE TICK, and INVISIBLE are eligible for RANDOM. CLONE CONTROLS USE THE NATIVE MIMIC PLAYER-COPY PATH."/>
+          <Border Margin="0,14,0,12" Height="1" Background="#32FFFFFF"/>
+          <TextBlock Style="{StaticResource Eyebrow}" Text="TWITCH BOSS SUMMON"/>
+          <TextBlock Margin="0,3,0,9" FontSize="20" FontWeight="Bold" Text="SPAWNER"/>
+          <TextBox x:Name="StreamBossSearchBox" Height="38" Padding="10,7" Background="#F2F2F2" Foreground="#08090A" BorderBrush="#8A8A8A" FontWeight="Bold" TextChanged="StreamBossSearchBox_TextChanged" ToolTip="Search the verified boss catalog"/>
+          <TextBlock Margin="0,5,0,0" Foreground="{StaticResource MutedBrush}" FontSize="10" Text="Type at least 2 characters to search."/>
+          <ListBox x:Name="StreamBossSearchResults" MaxHeight="130" Margin="0,7,0,0" Visibility="Collapsed" Background="#FF111317" BorderBrush="#55FFFFFF" Foreground="White" SelectionChanged="StreamBossSearchResults_SelectionChanged">
+            <ListBox.ItemTemplate><DataTemplate><TextBlock Padding="7,5" Foreground="White" FontWeight="SemiBold" TextWrapping="Wrap" Text="{Binding Name}"/></DataTemplate></ListBox.ItemTemplate>
+          </ListBox>
+          <Border Margin="0,8,0,0" Padding="9" Background="#16FFFFFF" BorderBrush="#45FFFFFF" BorderThickness="1" CornerRadius="6">
+            <TextBlock x:Name="StreamSelectedBossText" Foreground="White" FontWeight="Bold" TextWrapping="Wrap" Text="NO BOSS SELECTED"/>
+          </Border>
+          <TextBlock Margin="0,11,0,5" Style="{StaticResource Eyebrow}" Text="SCALING"/>
+          <ComboBox x:Name="StreamSpawnScalingBox" Style="{StaticResource LightComboBoxStyle}" Height="38" Padding="9,0" FontWeight="Bold"/>
+          <Button x:Name="StreamSpawnButton" Height="43" Margin="0,12,0,0" Click="StreamSpawnButton_Click" Content="SPAWN ONE · 7m AHEAD"/>
+          <TextBlock x:Name="StreamSpawnStatusText" Margin="0,9,0,0" Foreground="{StaticResource MutedBrush}" FontSize="10" TextWrapping="Wrap" Text="Single-spawn live control. Advanced multi-spawn remains in SPAWNER."/>
+        </StackPanel>
+      </Border>
+    </Grid>
+    <Grid x:Name="HotkeysDrawer" Grid.Row="1" Width="240" Height="620" Margin="0,52,0,0" HorizontalAlignment="Right" VerticalAlignment="Top" Panel.ZIndex="23" RenderTransformOrigin="0.5,0">
+      <Grid.RenderTransform><ScaleTransform x:Name="HotkeysDrawerTransform" ScaleY="0"/></Grid.RenderTransform>
+      <Border Background="#FF0D0F11" BorderBrush="#38FFFFFF" BorderThickness="1" CornerRadius="10" Padding="12">
+        <StackPanel>
+          <TextBlock Style="{StaticResource Eyebrow}" Text="REFERENCE"/>
+          <TextBlock Margin="0,3,0,11" FontSize="22" FontWeight="Bold" Text="HOTKEYS"/>
+          <TextBlock Style="{StaticResource Eyebrow}" Text="GLOBAL"/>
+          <Grid Margin="0,8,0,0"><Grid.ColumnDefinitions><ColumnDefinition/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions><TextBlock Text="HUD"/><TextBlock Grid.Column="1" FontFamily="Consolas" Text="F2"/></Grid>
+          <Grid Margin="0,7,0,0"><Grid.ColumnDefinitions><ColumnDefinition/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions><TextBlock Text="Capture portrait"/><TextBlock Grid.Column="1" FontFamily="Consolas" Text="Ctrl+1"/></Grid>
+          <Grid Margin="0,7,0,0"><Grid.ColumnDefinitions><ColumnDefinition/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions><TextBlock Text="Pause"/><TextBlock Grid.Column="1" FontFamily="Consolas" Text="Ctrl+P"/></Grid>
+          <Grid Margin="0,7,0,0"><Grid.ColumnDefinitions><ColumnDefinition/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions><TextBlock Text="Freecam"/><TextBlock Grid.Column="1" FontFamily="Consolas" Text="Ctrl+F6"/></Grid>
+          <Grid Margin="0,7,0,0"><Grid.ColumnDefinitions><ColumnDefinition/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions><TextBlock Text="Day cycle"/><TextBlock Grid.Column="1" FontFamily="Consolas" Text="F4"/></Grid>
+          <Border Margin="0,15,0,13" Height="1" Background="#28FFFFFF"/>
+          <TextBlock Style="{StaticResource Eyebrow}" Text="FREECAM · SUBJECT"/>
+          <Grid Margin="0,8,0,0"><Grid.ColumnDefinitions><ColumnDefinition/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions><TextBlock Text="Pick / release focus"/><TextBlock Grid.Column="1" FontFamily="Consolas" Text="Ctrl+A"/></Grid>
+          <Grid Margin="0,7,0,0"><Grid.ColumnDefinitions><ColumnDefinition/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions><TextBlock Text="Lock mouse camera"/><TextBlock Grid.Column="1" FontFamily="Consolas" Text="MMB"/></Grid>
+          <Grid Margin="0,7,0,0"><Grid.ColumnDefinitions><ColumnDefinition/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions><TextBlock Text="Orbit"/><TextBlock Grid.Column="1" FontFamily="Consolas" Text="Mouse"/></Grid>
+          <Grid Margin="0,7,0,0"><Grid.ColumnDefinitions><ColumnDefinition/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions><TextBlock Text="Distance"/><TextBlock Grid.Column="1" FontFamily="Consolas" Text="Wheel"/></Grid>
+          <Grid Margin="0,7,0,0"><Grid.ColumnDefinitions><ColumnDefinition/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions><TextBlock Text="Aim height"/><TextBlock Grid.Column="1" FontFamily="Consolas" Text="Ctrl+Wheel"/></Grid>
+          <Grid Margin="0,7,0,0"><Grid.ColumnDefinitions><ColumnDefinition/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions><TextBlock Text="Pan left/right"/><TextBlock Grid.Column="1" FontFamily="Consolas" Text="Ctrl+Shift+Wheel"/></Grid>
+          <Grid Margin="0,7,0,0"><Grid.ColumnDefinitions><ColumnDefinition/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions><TextBlock Text="FOV"/><TextBlock Grid.Column="1" FontFamily="Consolas" Text="Alt+Wheel"/></Grid>
+          <Grid Margin="0,7,0,0"><Grid.ColumnDefinitions><ColumnDefinition/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions><TextBlock Text="Raise / lower"/><TextBlock Grid.Column="1" FontFamily="Consolas" Text="Space / Shift"/></Grid>
+          <TextBlock Margin="0,16,0,0" Foreground="{StaticResource MutedBrush}" FontSize="10" TextWrapping="Wrap" Text="Camera effects remain armed while changing pages. Context-dependent effects begin automatically when a valid focus is available."/>
+        </StackPanel>
+      </Border>
+    </Grid>
+    <!-- MANDATORY: Item hover cards must remain opaque, stable, and inside this
+         main-window layer so OBS Window Capture always receives them. Never
+         replace this with ToolTip, Popup, another Window, or a redraw timer. -->
+    <Canvas x:Name="InWindowHoverLayer" Grid.Row="1" Panel.ZIndex="100" IsHitTestVisible="False" ClipToBounds="True">
+      <Border x:Name="InWindowHoverCard" Width="440" Opacity="0" Background="#FF08090B" BorderBrush="White" BorderThickness="1.5" CornerRadius="14" Padding="20" SnapsToDevicePixels="True">
+        <Grid>
+          <Grid.RowDefinitions><RowDefinition Height="250"/><RowDefinition Height="Auto"/></Grid.RowDefinitions>
+          <Border Background="#FF08090B" CornerRadius="10">
+            <Image Source="{Binding ImagePath}" Stretch="Uniform" Margin="10"/>
+          </Border>
+          <StackPanel Grid.Row="1" Margin="0,18,0,0">
+            <TextBlock Foreground="#D0D2D6" FontSize="16" FontWeight="SemiBold" Text="{Binding Category}"/>
+            <TextBlock Margin="0,4,0,0" Foreground="White" FontSize="28" FontWeight="Bold" TextWrapping="Wrap" Text="{Binding Name}"/>
+            <TextBlock Margin="0,9,0,0" Foreground="#D5D7DD" FontSize="18" LineHeight="25" TextWrapping="Wrap" Text="{Binding Description}"/>
+          </StackPanel>
+        </Grid>
+      </Border>
+    </Canvas>
+  </Grid>
+</Window>

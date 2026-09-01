@@ -1,0 +1,11 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/EnemyIntel.App/EnemyIntel.App.csproj" />
+    <Project Path="src/EnemyIntel.Core/EnemyIntel.Core.csproj" />
+    <Project Path="src/EnemyIntel.Data/EnemyIntel.Data.csproj" />
+    <Project Path="src/EnemyIntel.Game.Legacy/EnemyIntel.Game.Legacy.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/EnemyIntel.Tests/EnemyIntel.Tests.csproj" />
+  </Folder>
+</Solution>

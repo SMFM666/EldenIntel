@@ -1,0 +1,8 @@
+[
+  {
+    "itemId": 1000000,
+    "category": "Weapons",
+    "description": "A lightweight, straight-bladed dagger suited to rapid attacks and especially effective critical strikes.",
+    "effect": "Skill: Quickstep"
+  }
+]

@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Elden Intel Interact</title>
+  <link rel="stylesheet" href="overlay.css?v=boss-rest-state-3">
+  <script src="https://extension-files.twitch.tv/helper/v1/twitch-ext.min.js"></script>
+</head>
+<body>
+  <svg class="effect-filters" aria-hidden="true" width="0" height="0">
+    <defs>
+      <filter id="life-steal-goo" x="-35%" y="-70%" width="170%" height="240%">
+        <feGaussianBlur in="SourceGraphic" stdDeviation="4.2" result="blur" />
+        <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 20 -8" result="goo" />
+        <feComposite in="SourceGraphic" in2="goo" operator="atop" />
+      </filter>
+      <filter id="boss-fire" x="-100%" y="-350%" width="300%" height="550%" color-interpolation-filters="sRGB"><feGaussianBlur in="SourceGraphic" stdDeviation="6" result="bossBlur"/><feColorMatrix in="bossBlur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -7" result="bossFire"/><feBlend in="SourceGraphic" in2="bossFire" mode="normal"/></filter>
+    </defs>
+  </svg>
+  <main id="overlay" class="overlay" data-open="false">
+    <button id="launcher" class="launcher" aria-label="Toggle Elden Intel effects" aria-expanded="false" aria-controls="effectsPanel">
+      <span class="launcher-card" aria-hidden="true">
+        <span class="launcher-sheen"></span>
+        <span class="launcher-copy"><small>ELDEN INTEL</small><strong>JOIN</strong></span>
+      </span>
+    </button>
+
+    <section id="effectsPanel" class="panel effects-panel" aria-label="Available effects" aria-hidden="true">
+      <span class="panel-depth" aria-hidden="true"></span>
+      <header class="panel-header">
+        <div><p class="eyebrow">ELDEN INTEL</p><h1>INTERACTIONS</h1></div>
+        <span id="armedBadge" class="badge armed">ARMED</span>
+      </header>
+      <div id="effectGrid" class="effect-grid"></div>
+      <div id="bossPicker" class="boss-picker" hidden>
+        <div class="boss-picker-head"><strong>CHOOSE A BOSS</strong><button id="bossPickerClose" type="button" aria-label="Close boss search">×</button></div>
+        <label for="bossSearch">TYPE A BOSS NAME</label>
+        <div id="bossSearchFire" class="boss-search-fire"><input id="bossSearch" type="search" autocomplete="off" spellcheck="false" placeholder="Malenia, Midra, Radahn…" aria-controls="bossResults"></div>
+        <div id="bossResults" class="boss-results" role="listbox" aria-label="Boss search results"></div>
+        <small id="bossSearchHint">Choose one verified result to summon.</small>
+      </div>
+      <footer><span id="relayStatus">CONNECTING</span><span id="viewerLabel">VIEWER</span></footer>
+    </section>
+
+    <aside id="smashEvent" class="smash-event" aria-hidden="true">
+      <div class="smash-meter" aria-hidden="true"><i id="smashFill"></i></div>
+      <button id="smashButton" class="smash-button" type="button" aria-label="Hurt Seth community button">
+        <span class="smash-button-top"><em id="smashCount" aria-label="Community presses">0</em><span class="smash-title"><strong>HURT SETH</strong><b>BUTTON</b></span></span>
+      </button>
+      <span id="smashTimer" class="smash-timer">15.0</span>
+    </aside>
+    <div id="smashTotal" class="smash-total" aria-live="polite" aria-hidden="true"></div>
+
+    <aside id="cloneVote" class="clone-vote" aria-hidden="true">
+      <p>SPAWN CLONE</p>
+      <h2>HELP OR HURT?</h2>
+      <div class="clone-vote-options">
+        <button id="cloneHelp" type="button"><strong>HELP</strong><span id="cloneHelpVotes">0</span></button>
+        <button id="cloneHurt" type="button"><strong>HURT</strong><span id="cloneHurtVotes">0</span></button>
+      </div>
+      <div class="clone-vote-timer"><i id="cloneVoteFill"></i></div>
+      <span id="cloneVoteSeconds">20.0</span>
+    </aside>
+
+    <section id="queuePanel" class="panel queue-panel" aria-label="Effect queue">
+      <span class="panel-depth" aria-hidden="true"></span>
+      <div class="queue-content">
+        <header class="queue-header"><span id="queueCount">0 / 8</span></header>
+        <div id="activeEffect" class="active-effect empty"><strong class="queue-idle">QUEUE <span class="queue-dots" aria-hidden="true"><i>.</i><i>.</i><i>.</i></span></strong></div>
+        <ol id="queueList" class="queue-list"></ol>
+      </div>
+    </section>
+
+    <div id="toast" class="toast" role="status"></div>
+  </main>
+  <script src="relay-config.js"></script>
+  <script src="overlay.js?v=smash-player-shield-2"></script>
+</body>
+</html>

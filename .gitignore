@@ -1,0 +1,42 @@
+# .NET / Visual Studio output
+**/bin/
+**/obj/
+.vs/
+artifacts/
+release/
+*.user
+*.pdb
+
+# Native build products
+**/build*/
+*.dll
+*.exe
+*.lib
+*.exp
+
+# Runtime state and secrets
+*.db
+*.db-shm
+*.db-wal
+*.log
+*.dpapi
+relay.key
+appsettings.Development.json
+
+# Packaged/generated artifacts
+*.zip
+captures/
+
+# Duplicate generated asset mirror; the build owns src/EnemyIntel.App/assets.
+/assets/
+
+# Local research checkouts and upstream repositories are not project source.
+/analysis/
+/reference/
+/third_party/
+
+# Extracted/proprietary game regulation data. Keep only the rebuild script,
+# package metadata, and documentation in runtime-mod/EldenIntelSummons.
+/runtime-mod/EldenIntelSummons/compare-base/
+/runtime-mod/EldenIntelSummons/regulation-bin/
+/runtime-mod/EldenIntelSummons/regulation.bin*

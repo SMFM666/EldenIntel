@@ -1,0 +1,69 @@
+{
+  "Spirits": [
+    {
+      "BaseName": "Mimic Tear",
+      "VariantName": "Mimic Tear (Human) (Summon)",
+      "BaseNpcID": 100000010,
+      "BaseThinkID": 100000010,
+      "CharaInitID": 26050,
+      "Team": {
+        "Name": "EldenIntel Enemy Clone",
+        "TeamType": 6,
+        "PhantomParamID": 0,
+        "TeamHpMult": 1.0,
+        "TeamDamageMult": 1.0,
+        "FollowPlayer": false,
+        "TeamPosition": {
+          "X": 0.0,
+          "Z": 3.0,
+          "Ang": 180.0,
+          "PresetName": "",
+          "X_increment": 0.0,
+          "Z_increment": 0.0,
+          "EnemiesOffsetInitX": false,
+          "IsPreset": false,
+          "Label": "0x 3z 180º"
+        }
+      },
+      "Position": {
+        "X": 0.0,
+        "Z": 0.0,
+        "Ang": 0.0,
+        "PresetName": "",
+        "X_increment": 0.0,
+        "Z_increment": 0.0,
+        "EnemiesOffsetInitX": false,
+        "IsPreset": false,
+        "Label": "0x 0z 0º"
+      },
+      "HpMult": 1.0,
+      "DamageMult": 1.0,
+      "Sp_StatScaling": -200,
+      "Sp_SpecialScaling": -1,
+      "BehaviorSpEffects": [],
+      "LongDistanceAggro": true,
+      "SpecialEffects": [4302]
+    }
+  ],
+  "Teams": [
+    {
+      "Name": "EldenIntel Enemy Clone",
+      "TeamType": 6,
+      "PhantomParamID": 0,
+      "TeamHpMult": 1.0,
+      "TeamDamageMult": 1.0,
+      "FollowPlayer": false,
+      "TeamPosition": {
+        "X": 0.0,
+        "Z": 3.0,
+        "Ang": 180.0,
+        "PresetName": "",
+        "X_increment": 0.0,
+        "Z_increment": 0.0,
+        "EnemiesOffsetInitX": false,
+        "IsPreset": false,
+        "Label": "0x 3z 180º"
+      }
+    }
+  ]
+}

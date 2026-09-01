@@ -1,0 +1,48 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <UseWPF>true</UseWPF>
+    <ApplicationIcon>assets\Branding\EldenIntel.ico</ApplicationIcon>
+    <AssemblyName>EldenIntel</AssemblyName>
+    <Product>EldenIntel</Product>
+    <Title>EldenIntel</Title>
+    <!-- Keep the portable app self-contained while compressing the bundled
+         runtime. This cuts distribution size substantially without trimming
+         WPF/reflection-dependent code. -->
+    <EnableCompressionInSingleFile>true</EnableCompressionInSingleFile>
+    <DebugType>None</DebugType>
+    <DebugSymbols>false</DebugSymbols>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\EnemyIntel.Core\EnemyIntel.Core.csproj" />
+    <ProjectReference Include="..\EnemyIntel.Data\EnemyIntel.Data.csproj" />
+    <ProjectReference Include="..\EnemyIntel.Game.Legacy\EnemyIntel.Game.Legacy.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="assets\Fonts\*.otf" />
+    <Resource Include="assets\Branding\EldenIntelEmblem.png" />
+    <Content Include="native\EnemyIntelFreecam\EnemyIntelFreecam.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+    </Content>
+    <Content Include="native\EnemyIntelFreecam\Freecam\config.ini">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+    </Content>
+    <Content Include="..\..\native\FreecamMod\THIRD_PARTY_NOTICES.txt"
+             Link="native\EnemyIntelFreecam\THIRD_PARTY_NOTICES.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+    </Content>
+    <Content Include="assets\Characters\*.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+    </Content>
+    <Content Include="assets\Items\*\*\icon.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="assets\Database\*">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+</Project>
