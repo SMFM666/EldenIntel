@@ -1810,6 +1810,19 @@ public sealed class LegacyGameCameraService : IDisposable
                 var currentHp = memory.ReadInt32(hpAddress);
                 if (currentHp < previousHp)
                 {
+                    // No Player Damage is authoritative over every spawned-boss
+                    // scaling profile. The practice flag can restore HP during
+                    // the same hit window; never let this guard race it and
+                    // replace that restoration with scaled damage.
+                    if (_service.GetPracticeFlagState("NO DAMAGE") == true)
+                    {
+                        currentHp = previousHp;
+                        memory.WriteBytes(hpAddress, BitConverter.GetBytes(currentHp));
+                        previousHp = currentHp;
+                        Thread.Sleep(2);
+                        continue;
+                    }
+
                     var lastHitBy = memory.ReadUInt64(player + ChrInsLastHitByOffset);
                     ScaledSpawnProfile? profile = null;
                     lock (_spawnScalingGate)
