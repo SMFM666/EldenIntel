@@ -1718,7 +1718,9 @@ public sealed class LegacyGameCameraService : IDisposable
         }
         else
         {
-            damageMultiplier *= 0.5f;
+            // Auto Balance was first reduced to half strength. Reduce that
+            // live-tested value by a further 25% for stream-safe encounters.
+            damageMultiplier *= 0.375f;
         }
 
         var modules = memory.ReadUInt64(character + ChrInsModulesOffset);
