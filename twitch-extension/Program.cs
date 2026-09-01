@@ -164,12 +164,12 @@ sealed class EffectRelay
     private EffectItem? _active;
     private readonly Dictionary<string, (string Name, int Duration, TimeSpan Cooldown)> _allowed = new(StringComparer.OrdinalIgnoreCase)
     {
-        ["summon-boss"] = ("SUMMON A BOSS", 4, TimeSpan.FromMinutes(5)),
+        ["summon-boss"] = ("SUMMON A BOSS", 4, TimeSpan.FromSeconds(45)),
         ["time-shift"] = ("SHIFT TIME", 5, TimeSpan.FromSeconds(12)),
         ["heal-player"] = ("HEAL PLAYER", 2, TimeSpan.FromSeconds(60)),
         ["life-steal"] = ("LIFE STEAL", 3, TimeSpan.FromSeconds(60)),
         ["slow-world"] = ("SLOW WORLD", 8, TimeSpan.FromSeconds(120)),
-        ["random"] = ("RANDOM EFFECT", 8, TimeSpan.FromSeconds(300))
+        ["random"] = ("RANDOM EFFECT", 8, TimeSpan.FromSeconds(20))
         ,["spawn-clone-help"] = ("ALLY CLONE · HELP", 4, TimeSpan.FromMinutes(3))
         ,["spawn-clone-hurt"] = ("ENEMY CLONE · HURT", 4, TimeSpan.FromMinutes(3))
         ,["hurt-seth"] = ("HURT SETH · 0.5%", 0, TimeSpan.Zero)

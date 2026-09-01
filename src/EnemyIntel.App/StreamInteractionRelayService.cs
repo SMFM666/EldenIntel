@@ -101,7 +101,7 @@ internal sealed class StreamInteractionRelayService : IDisposable
         {
             var item = await ReceiveAsync<RelayEffect>(socket, cancellationToken);
             if (item is null) return;
-            var result = await _execute(item.EffectId, item.BossName);
+            var result = await ExecuteSafelyAsync(item);
             await SendAsync(socket, new { succeeded = result.Succeeded, message = result.Message }, cancellationToken);
         }
     }
@@ -114,12 +114,25 @@ internal sealed class StreamInteractionRelayService : IDisposable
             if (!response.IsSuccessStatusCode) return;
             var item = await response.Content.ReadFromJsonAsync<RelayEffect>(cancellationToken: cancellationToken);
             if (item is null) return;
-            var result = await _execute(item.EffectId, item.BossName);
+            var result = await ExecuteSafelyAsync(item);
             await _client.PostAsJsonAsync($"api/consumer/{item.Id}/complete",
                 new { succeeded = result.Succeeded, message = result.Message }, cancellationToken);
         }
         catch (OperationCanceledException) when (cancellationToken.IsCancellationRequested) { }
         catch { }
+    }
+
+    private async Task<(bool Succeeded, string Message)> ExecuteSafelyAsync(RelayEffect item)
+    {
+        try
+        {
+            return await _execute(item.EffectId, item.BossName);
+        }
+        catch (Exception exception)
+        {
+            Debug.WriteLine($"[EldenIntel] Twitch action {item.EffectId} failed: {exception}");
+            return (false, $"{item.EffectId.ToUpperInvariant()} FAILED SAFELY — ACTION WAS NOT APPLIED");
+        }
     }
 
     private async Task<T?> ReceiveAsync<T>(ClientWebSocket socket, CancellationToken cancellationToken)

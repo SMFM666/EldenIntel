@@ -1,11 +1,11 @@
 const extensionClientId='uokh78i6q53c9ozc7fwex439qdx3li';
 const effects=[
   {id:'spawn-clone',name:'SPAWN CLONE',cooldown:180,enabled:true},
-  {id:'summon-boss',name:'SUMMON A BOSS',cooldown:300,enabled:true},
+  {id:'summon-boss',name:'SUMMON A BOSS',cooldown:45,enabled:true},
   {id:'life-steal',name:'LIFE STEAL',cooldown:60,enabled:true},
   {id:'heal-player',name:'HEAL PLAYER',cooldown:60,enabled:true},
   {id:'slow-world',name:'SLOW WORLD',cooldown:120,enabled:true},
-  {id:'random',name:'RANDOM EFFECT',cooldown:300,enabled:true}
+  {id:'random',name:'RANDOM EFFECT',cooldown:20,enabled:true}
 ];
 const isLocalPreview=['localhost','127.0.0.1'].includes(location.hostname);
 const relayBase=(isLocalPreview?location.origin:(window.ELDENINTEL_RELAY_BASE||'')).replace(/\/$/,'');
