@@ -236,7 +236,6 @@ public sealed class LegacyGameCameraService : IDisposable
     public bool IsFreecamAutoPauseEnabled => _service.GetFreecamAutoPauseState();
     public Task<string> SetFreecamAutoPauseAsync(bool enabled) =>
         RunAsync(() => _service.SetFreecamAutoPause(enabled), requireVerifiedSession: false);
-    public Task<string> ToggleDayCycleAsync() => RunAsync(_service.ToggleDayCycle);
     public Task<string> PlayGestureAsync(int gestureId) => RunAsync(() => _service.PlayGesture(gestureId));
     public Task<string> ToggleActiveViewAsync() => RunAsync(_service.ToggleActiveView);
     public Task<string> ToggleRealPauseAsync() => RunAsync(ToggleRealPause);

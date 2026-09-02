@@ -59,7 +59,6 @@ public partial class MainWindow : Window
     private bool _drawerWeaponHitboxAvailable;
     private bool _drawerWorldHidden;
     private bool _drawerWorldVisibilityAvailable;
-    private bool _drawerDayCycleEnabled;
     private bool _enemySpawnInFlight;
     private int _streamBossSummonInFlight;
     private bool _enemySpawnMultipleEnabled;
@@ -165,7 +164,7 @@ public partial class MainWindow : Window
         }
         if (string.Equals(effectId, "random", StringComparison.OrdinalIgnoreCase))
         {
-            var choices = new[] { "heal-player", "life-steal", "time-shift", "slow-world", "harmless-fire", "tick-damage", "smol-character", "invisible-character" };
+            var choices = new[] { "heal-player", "life-steal", "slow-world", "harmless-fire", "tick-damage", "smol-character", "invisible-character" };
             return await ExecuteStreamEffectAsync(choices[Random.Shared.Next(choices.Length)], null);
         }
         if (string.Equals(effectId, "heal-player", StringComparison.OrdinalIgnoreCase))
@@ -258,37 +257,7 @@ public partial class MainWindow : Window
                 throw;
             }
         }
-        if (!string.Equals(effectId, "time-shift", StringComparison.OrdinalIgnoreCase))
-            return (false, "Effect is not enabled in EldenIntel.");
-
-        return await Dispatcher.InvokeAsync(async () =>
-        {
-            try
-            {
-                if (!_drawerDayCycleEnabled)
-                {
-                    var start = await _cameraService.ToggleDayCycleAsync();
-                    if (!start.StartsWith("DAY CYCLE ON", StringComparison.OrdinalIgnoreCase))
-                        return (false, start);
-                    _drawerDayCycleEnabled = true;
-                    ApplyCameraToggleVisual(DrawerDayCycleButton, true, "DAY CYCLE  •  ACTIVE");
-                }
-
-                await Task.Delay(TimeSpan.FromSeconds(5));
-                if (_drawerDayCycleEnabled)
-                {
-                    var stop = await _cameraService.ToggleDayCycleAsync();
-                    _drawerDayCycleEnabled = false;
-                    ApplyCameraToggleVisual(DrawerDayCycleButton, false, "DAY CYCLE");
-                    DrawerStatusText.Text = stop;
-                }
-                return (true, "Time shift completed.");
-            }
-            catch (Exception ex)
-            {
-                return (false, ex.Message);
-            }
-        }).Task.Unwrap();
+        return (false, "Effect is not enabled in EldenIntel.");
     }
 
     protected override void OnSourceInitialized(EventArgs e)
@@ -1681,31 +1650,6 @@ public partial class MainWindow : Window
         finally
         {
             DrawerHideWorldButton.IsEnabled = _drawerWorldVisibilityAvailable;
-        }
-    }
-
-    private async void DrawerDayCycleButton_Click(object sender, RoutedEventArgs e)
-    {
-        DrawerDayCycleButton.IsEnabled = false;
-        DrawerStatusText.Text = "Working…";
-        try
-        {
-            var status = await _cameraService.ToggleDayCycleAsync();
-            if (status.StartsWith("DAY CYCLE ON", StringComparison.OrdinalIgnoreCase))
-                _drawerDayCycleEnabled = true;
-            else if (status.StartsWith("DAY CYCLE OFF", StringComparison.OrdinalIgnoreCase))
-                _drawerDayCycleEnabled = false;
-            ApplyCameraToggleVisual(
-                DrawerDayCycleButton,
-                _drawerDayCycleEnabled,
-                _drawerDayCycleEnabled ? "DAY CYCLE  •  ACTIVE" : "DAY CYCLE");
-            DrawerStatusText.Text = _drawerDayCycleEnabled
-                ? "SLOW DAY CYCLE ACTIVE — PRESS AGAIN OR F4 TO STOP"
-                : status;
-        }
-        finally
-        {
-            DrawerDayCycleButton.IsEnabled = true;
         }
     }
 

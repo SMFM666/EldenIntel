@@ -16,7 +16,7 @@ The broadcaster runs the companion EldenIntel desktop application locally.
 1. Open the review channel and enable the video overlay.
 2. Select the glowing INTERACT launcher in the lower-left corner.
 3. Confirm the overlay reports `ELDENINTEL ONLINE` and `ARMED`.
-4. Request HEAL PLAYER, SHIFT TIME, LIFE STEAL, SLOW WORLD, or RANDOM EFFECT.
+4. Request HEAL PLAYER, LIFE STEAL, SLOW WORLD, or RANDOM EFFECT.
 5. Select SUMMON A BOSS, search for a boss, and choose one verified result.
 6. Confirm the selected boss appears in EFFECT QUEUE with its queue position.
 7. Confirm the active item moves to LIVE and its progress bar advances.
@@ -59,7 +59,7 @@ availability can be coordinated between 9:00 AM and 5:00 PM Pacific Time.
 
 - Initial private-streamer release.
 - Real-time WebSocket queue shared across viewers.
-- HEAL PLAYER, SHIFT TIME, LIFE STEAL, SLOW WORLD, RANDOM EFFECT, and a
+- HEAL PLAYER, LIFE STEAL, SLOW WORLD, RANDOM EFFECT, and a
   single-spawn SUMMON A BOSS action with a shared five-minute cooldown.
 - Broadcaster arm, pause, clear-queue, connection, and queue controls.
 - Shared HELP OR HURT clone vote with live totals and ally/enemy outcomes.

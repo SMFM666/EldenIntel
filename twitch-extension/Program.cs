@@ -165,7 +165,6 @@ sealed class EffectRelay
     private readonly Dictionary<string, (string Name, int Duration, TimeSpan Cooldown)> _allowed = new(StringComparer.OrdinalIgnoreCase)
     {
         ["summon-boss"] = ("SUMMON A BOSS", 4, TimeSpan.FromSeconds(45)),
-        ["time-shift"] = ("SHIFT TIME", 5, TimeSpan.FromSeconds(12)),
         ["heal-player"] = ("HEAL PLAYER", 2, TimeSpan.FromSeconds(60)),
         ["life-steal"] = ("LIFE STEAL", 3, TimeSpan.FromSeconds(60)),
         ["slow-world"] = ("SLOW WORLD", 8, TimeSpan.FromSeconds(120)),

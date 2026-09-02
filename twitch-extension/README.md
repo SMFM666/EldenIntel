@@ -8,12 +8,11 @@ Extension Client ID: `uokh78i6q53c9ozc7fwex439qdx3li`
 
 ## Current 0.0.1 effects
 
-- Shift Time
 - Heal Player
 - Life Steal (nonlethal, 15% maximum HP)
 - Slow World (55% speed for 8 seconds)
 - Random Effect (selects from the safe enabled pool)
-- Summon a Boss (one Auto Balanced spawn, five-minute shared cooldown)
+- Summon a Boss (one Auto Balanced spawn, 45-second shared cooldown)
 - Spawn Clone (a shared 20-second Help or Hurt vote with a three-minute cooldown)
 
 Summon a Boss opens a viewer search popover backed by EldenIntel's verified

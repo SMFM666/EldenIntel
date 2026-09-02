@@ -52,7 +52,7 @@ private:
         Keybind{"reset_settings", Action{ ResetSettings, { 'R' }, { VK_CONTROL }}},
         Keybind{"toggle_freeze", Action{ ToggleFreeze, { 'P' }}},
         Keybind{"teleport_to_camera", Action{ TeleportToCamera, { VK_F3 }}},
-        Keybind{"cycle_weather_time", Action{ CycleWeatherTime, { VK_F4 }}},
+        Keybind{"cycle_weather_time", Action{ CycleWeatherTime, { VK_CONTROL, VK_MENU, VK_SHIFT, VK_F12 }}},
         Keybind{"exit_mod", Action{ ExitMod, { VK_DELETE }}},
         Keybind{"start/end_recording", Action{ StartEndRecording, { VK_F8 }}},
         Keybind{"start/end_playing_recording", Action{ StartEndPlayingRecording, { VK_F9}}},

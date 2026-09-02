@@ -210,7 +210,6 @@
           <Button x:Name="HidePlayerButton" Height="42" Margin="0,8,0,0" Click="HidePlayerButton_Click" ToolTip="Hide the local player model from viewers for 20 seconds without changing enemy awareness" Content="HIDE PLAYER · 20s"/>
           <Button x:Name="NinjaSetButton" Height="42" Margin="0,8,0,0" Click="NinjaSetButton_Click" ToolTip="Apply the player-only Transmogrify Ninja Set appearance" Content="NINJA SET"/>
           <Button x:Name="ConfessorSetButton" Height="42" Margin="0,8,0,0" Click="ConfessorSetButton_Click" ToolTip="Apply the player-only Transmogrify Confessor Set appearance" Content="CONFESSOR SET"/>
-          <Button x:Name="DrawerDayCycleButton" Height="42" Margin="0,8,0,0" Click="DrawerDayCycleButton_Click" ToolTip="Toggle a slow, filming-friendly time-of-day cycle" Content="DAY CYCLE"/>
           <Border Margin="0,12,0,0" BorderBrush="#45FFFFFF" BorderThickness="1,1,1,0"/>
           <TextBlock Margin="0,10,0,5" Style="{StaticResource Eyebrow}" Text="ANIMATION LAB  •  EXPERIMENTAL"/>
           <ComboBox x:Name="GesturePicker" Style="{StaticResource LightComboBoxStyle}" Height="38" Padding="8,0" SelectedIndex="0">
@@ -227,7 +226,6 @@
           <Grid Margin="0,6,0,0"><Grid.ColumnDefinitions><ColumnDefinition/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions><TextBlock Foreground="{StaticResource MutedBrush}" Text="Capture"/><TextBlock Grid.Column="1" FontFamily="Consolas" Text="Ctrl+1"/></Grid>
           <Grid Margin="0,6,0,0"><Grid.ColumnDefinitions><ColumnDefinition/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions><TextBlock Foreground="{StaticResource MutedBrush}" Text="Pause"/><TextBlock Grid.Column="1" FontFamily="Consolas" Text="Ctrl+P"/></Grid>
           <Grid Margin="0,6,0,0"><Grid.ColumnDefinitions><ColumnDefinition/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions><TextBlock Foreground="{StaticResource MutedBrush}" Text="Freecam"/><TextBlock Grid.Column="1" FontFamily="Consolas" Text="Ctrl+F6"/></Grid>
-          <Grid Margin="0,6,0,0"><Grid.ColumnDefinitions><ColumnDefinition/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions><TextBlock Foreground="{StaticResource MutedBrush}" Text="Day cycle"/><TextBlock Grid.Column="1" FontFamily="Consolas" Text="F4"/></Grid>
         </StackPanel>
       </Border>
     </Grid>
@@ -480,7 +478,6 @@
           <Grid Margin="0,7,0,0"><Grid.ColumnDefinitions><ColumnDefinition/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions><TextBlock Text="Capture portrait"/><TextBlock Grid.Column="1" FontFamily="Consolas" Text="Ctrl+1"/></Grid>
           <Grid Margin="0,7,0,0"><Grid.ColumnDefinitions><ColumnDefinition/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions><TextBlock Text="Pause"/><TextBlock Grid.Column="1" FontFamily="Consolas" Text="Ctrl+P"/></Grid>
           <Grid Margin="0,7,0,0"><Grid.ColumnDefinitions><ColumnDefinition/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions><TextBlock Text="Freecam"/><TextBlock Grid.Column="1" FontFamily="Consolas" Text="Ctrl+F6"/></Grid>
-          <Grid Margin="0,7,0,0"><Grid.ColumnDefinitions><ColumnDefinition/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions><TextBlock Text="Day cycle"/><TextBlock Grid.Column="1" FontFamily="Consolas" Text="F4"/></Grid>
           <Border Margin="0,15,0,13" Height="1" Background="#28FFFFFF"/>
           <TextBlock Style="{StaticResource Eyebrow}" Text="FREECAM · SUBJECT"/>
           <Grid Margin="0,8,0,0"><Grid.ColumnDefinitions><ColumnDefinition/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions><TextBlock Text="Pick / release focus"/><TextBlock Grid.Column="1" FontFamily="Consolas" Text="Ctrl+A"/></Grid>
