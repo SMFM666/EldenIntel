@@ -519,13 +519,12 @@ public sealed class LegacyGameCameraService : IDisposable
 
     private static string GetConfigPath()
     {
-        var activeProfileConfig = Path.Combine(
-            Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),
-            "garyttierney", "me3", "config", "profiles", "eldenring-mods",
-            "Release", "Freecam", "config.ini");
-        return File.Exists(activeProfileConfig)
-            ? activeProfileConfig
-            : Path.Combine(AppContext.BaseDirectory, "native", "EnemyIntelFreecam", "Freecam", "config.ini");
+        // FreecamModBridge always injects the DLL bundled beside EldenIntel.
+        // Its adjacent config is therefore the single authoritative file for
+        // camera tuning, regardless of which ME3 profile happens to exist.
+        return Path.Combine(
+            AppContext.BaseDirectory,
+            "native", "EnemyIntelFreecam", "Freecam", "config.ini");
     }
 
     public CameraTrackDocument LoadCameraTrack()
