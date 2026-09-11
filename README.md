@@ -1,16 +1,22 @@
 # EldenIntel
 
-EldenIntel is a portable Elden Ring enemy-intelligence and cinematic camera application.
+EldenIntel is a portable Windows application for Elden Ring enemy intelligence,
+cinematic camera control, local stream interactions, and offline creator tools.
 
-## What works in this milestone
+## Current capabilities
 
-- Modern WPF/XAML shell with MVVM state management.
-- Detects Elden Ring and uses the proven V2 lock-on reader through an isolated compatibility adapter.
-- Displays live enemy identity, HP, stance, portrait, and resolved equipment.
+- Detects Elden Ring and follows the current lock-on target.
+- Displays live enemy identity, HP, stance, portraits, equipment, and localized drops.
 - Imports the maintained TSV/JSON source data into a local, indexed SQLite database.
-- Displays database-backed enemy names and drop rates.
-- Shows connection and database diagnostics in the interface.
-- Keeps UI, domain contracts, persistence, and game integration in separate projects.
+- Provides freecam, camera-track, capture, spawner, clone, outfit, and offline
+  practice controls through the bundled native bridge.
+- Includes the local Twitch relay and hosted-extension frontend used by the
+  broadcaster workflow.
+- Includes selectable 32:9 UI fixes that target the active Elden Ring profile
+  reported by Mod Engine 3 Manager.
+
+EldenIntel is designed for offline/modded play. Do not use its memory-changing
+features with Easy Anti-Cheat or online play enabled.
 
 The generated local database is stored at:
 
@@ -47,6 +53,19 @@ Or run `run.ps1` from this folder.
 
 ## Portable release
 
-The self-contained Windows release is generated in `release\EldenIntelV1-portable`.
-It includes the .NET runtime, native freecam payload, portraits, item icons, and the
-trimmed database required by the application.
+The self-contained Windows x64 release is distributed as a ZIP. Extract the
+entire archive, then run `EldenIntel.exe` from the extracted folder. The archive
+includes the .NET runtime, native bridge, portraits, item icons, UI fixes,
+database sources, and local Twitch relay; no separate .NET installation is
+required.
+
+Do not run the executable from inside the ZIP. Keep the `assets`, `native`, and
+`TwitchRelay` folders beside `EldenIntel.exe`.
+
+Clone summons additionally require the matching locally built Mod Engine
+package. Elden Ring's regulation file is not redistributed in the public ZIP.
+
+## License
+
+EldenIntel is source-visible but not open source. Official compiled releases
+may be run for personal, non-commercial use under [LICENSE.md](LICENSE.md).

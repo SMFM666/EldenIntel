@@ -3,6 +3,7 @@ using System.Drawing.Imaging;
 using System.IO;
 using System.Runtime.InteropServices;
 using System.Threading;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -33,6 +34,10 @@ internal sealed class ScreenshotRegionWindow : Window
     // by roughly 25 percent for a less intrusive on-screen selector.
     public const int CaptureWidthPixels = 488;
     public const int CaptureHeightPixels = 938;
+    // Store portraits at EldenIntel's original/default asset resolution. The
+    // on-screen selector remains 25% smaller so it does not dominate gameplay.
+    public const int PortraitWidthPixels = 650;
+    public const int PortraitHeightPixels = 1250;
 
     private readonly Canvas _canvas = new();
     private readonly Border _selection;
@@ -51,7 +56,9 @@ internal sealed class ScreenshotRegionWindow : Window
         _virtualScreenPixels = GetVirtualScreenBounds();
         WindowStyle = WindowStyle.None;
         AllowsTransparency = true;
-        Background = new SolidColorBrush(MediaColor.FromArgb(88, 0, 0, 0));
+        // Keep the game at its true brightness while positioning the portrait
+        // frame. The selector border and toolbar provide all necessary contrast.
+        Background = MediaBrushes.Transparent;
         Topmost = true;
         ShowInTaskbar = false;
         ResizeMode = ResizeMode.NoResize;
@@ -254,37 +261,41 @@ internal sealed class ScreenshotRegionWindow : Window
         return Math.Clamp(value, 0, Math.Max(0, ActualHeight - _selection.Height));
     }
 
-    private void CaptureAndClose()
+    private async Task CaptureAndCloseAsync()
     {
         Rect capture = GetCaptureBoundsPixels();
-        // The selection window deliberately dims the desktop. Remove it from
-        // the composed scene before CopyFromScreen or a slow DWM frame can bake
-        // that black veil into the saved portrait.
-        Opacity = 0;
+        // Keep the modal HWND alive, but remove every visible selector layer.
+        // Awaiting between compositor barriers lets WPF's render thread publish
+        // a genuinely clean desktop frame without hiding/closing the modal
+        // window that owns the capture operation.
+        Background = MediaBrushes.Transparent;
+        _selection.Opacity = 0;
         IsHitTestVisible = false;
-        Visibility = Visibility.Hidden;
         UpdateLayout();
         Dispatcher.Invoke(() => { }, System.Windows.Threading.DispatcherPriority.Render);
         _ = DwmFlush();
-        Thread.Sleep(120);
+        await Task.Delay(200);
+        await Dispatcher.InvokeAsync(
+            () => { },
+            System.Windows.Threading.DispatcherPriority.Render);
         _ = DwmFlush();
 
         string folder = _captureDirectory;
         Directory.CreateDirectory(folder);
         string path = Path.Combine(
             folder,
-            $"enemy_capture_{DateTime.Now:yyyyMMdd_HHmmss}_{CaptureWidthPixels}x{CaptureHeightPixels}.png");
+            $"enemy_capture_{DateTime.Now:yyyyMMdd_HHmmss}_{PortraitWidthPixels}x{PortraitHeightPixels}.png");
 
         CaptureRegionToFile(capture, path);
         CapturedPath = path;
         Close();
     }
 
-    private void TryCaptureAndClose()
+    private async void TryCaptureAndClose()
     {
         try
         {
-            CaptureAndClose();
+            await CaptureAndCloseAsync();
         }
         catch (Exception exception)
         {
@@ -301,14 +312,28 @@ internal sealed class ScreenshotRegionWindow : Window
         {
             try
             {
-                using var bitmap = new DrawingBitmap(CaptureWidthPixels, CaptureHeightPixels);
-                using (DrawingGraphics graphics = DrawingGraphics.FromImage(bitmap))
+                using var sourceBitmap = new DrawingBitmap(CaptureWidthPixels, CaptureHeightPixels);
+                using (DrawingGraphics graphics = DrawingGraphics.FromImage(sourceBitmap))
                 {
                     graphics.Clear(DrawingColor.Black);
                     CopyVisibleScreenRegion(graphics, capture);
                 }
 
-                bitmap.Save(path, ImageFormat.Png);
+                using var portrait = new DrawingBitmap(PortraitWidthPixels, PortraitHeightPixels);
+                using (DrawingGraphics graphics = DrawingGraphics.FromImage(portrait))
+                {
+                    graphics.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
+                    graphics.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
+                    graphics.PixelOffsetMode = System.Drawing.Drawing2D.PixelOffsetMode.HighQuality;
+                    graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+                    graphics.DrawImage(
+                        sourceBitmap,
+                        new DrawingRectangle(0, 0, PortraitWidthPixels, PortraitHeightPixels),
+                        new DrawingRectangle(0, 0, CaptureWidthPixels, CaptureHeightPixels),
+                        System.Drawing.GraphicsUnit.Pixel);
+                }
+
+                portrait.Save(path, ImageFormat.Png);
             }
             catch (Exception exception)
             {

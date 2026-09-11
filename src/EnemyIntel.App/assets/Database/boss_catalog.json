@@ -812,6 +812,13 @@
         "SuppressDeathRewards":  true
     },
     {
+        "Name":  "Grafted Scion (Liurnia of the Lakes)",
+        "Model":  "c4690",
+        "NpcParamId":  46900020,
+        "ThinkParamId":  46900000,
+        "SuppressDeathRewards":  true
+    },
+    {
         "Name":  "Grave Warden Duelist (Altus Plateau)",
         "Model":  "c3400",
         "NpcParamId":  34000034,

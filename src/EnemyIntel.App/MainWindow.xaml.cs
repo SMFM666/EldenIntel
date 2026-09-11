@@ -59,6 +59,8 @@ public partial class MainWindow : Window
     private bool _drawerWeaponHitboxAvailable;
     private bool _drawerWorldHidden;
     private bool _drawerWorldVisibilityAvailable;
+    private readonly UiFixManager _uiFixManager = new();
+    private bool _refreshingUiFixState;
     private bool _enemySpawnInFlight;
     private int _streamBossSummonInFlight;
     private bool _enemySpawnMultipleEnabled;
@@ -84,6 +86,29 @@ public partial class MainWindow : Window
     private const int PossessionReleaseHotkeyId = 0x6106;
     private const uint ModControl = 0x0002;
     private const uint ModNoRepeat = 0x4000;
+    private static readonly UiFixOption[] UiFixOptions =
+    [
+        new("all", "FULL UI FIX"),
+        new("dialogue", "DIALOGUE + CAPTIONS"),
+        new("hud", "HUD + PROMPTS"),
+        new("menus", "MENUS + POPUPS"),
+        new("map", "WORLD MAP"),
+        new("loading", "LOADING + FADES"),
+        new("frontEnd", "TITLE + CHARACTER")
+    ];
+    private static readonly GestureOption[] GestureOptions =
+    [
+        new(7, "WAVE"),
+        new(23, "BECKON / TAUNT MOD"),
+        new(22, "POINT DOWN / FINGER MOD"),
+        new(70, "JUMP FOR JOY"),
+        new(71, "TRIUMPHANT DELIGHT"),
+        new(72, "FANCY SPIN"),
+        new(73, "FINGER SNAP"),
+        new(90, "PATCHES CROUCH"),
+        new(92, "REST"),
+        new(103, "ERUDITION")
+    ];
 
     public MainWindow()
     {
@@ -128,8 +153,62 @@ public partial class MainWindow : Window
         _ = RefreshPauseVisualAsync();
         _ = RefreshFreecamVisualAsync();
         WindowSettingsService.Restore(this);
+        UiFixPicker.ItemsSource = UiFixOptions;
+        UiFixPicker.SelectedIndex = 0;
+        GesturePicker.ItemsSource = GestureOptions;
+        GesturePicker.SelectedIndex = 0;
+        RefreshUiFixState();
         _streamRelay.Start();
     }
+
+    private void UiFixPicker_SelectionChanged(object sender, SelectionChangedEventArgs e)
+    {
+        if (!IsInitialized) return;
+        RefreshUiFixState();
+    }
+
+    private void RefreshUiFixState()
+    {
+        var key = GetSelectedUiFixKey();
+        if (key is null) return;
+        _refreshingUiFixState = true;
+        try
+        {
+            var state = _uiFixManager.GetState(key);
+            UiFixEnabledCheckBox.IsChecked = state.Enabled;
+            UiFixEnabledCheckBox.IsEnabled = state.Available;
+            UiFixStatusText.Text = state.Message;
+        }
+        finally
+        {
+            _refreshingUiFixState = false;
+        }
+    }
+
+    private void UiFixEnabledCheckBox_Changed(object sender, RoutedEventArgs e)
+    {
+        if (_refreshingUiFixState || !IsInitialized) return;
+        var key = GetSelectedUiFixKey();
+        if (key is null) return;
+        UiFixEnabledCheckBox.IsEnabled = false;
+        try
+        {
+            var result = _uiFixManager.SetEnabled(key, UiFixEnabledCheckBox.IsChecked == true);
+            UiFixStatusText.Text = result;
+            DrawerStatusText.Text = result;
+        }
+        catch (Exception exception)
+        {
+            UiFixStatusText.Text = $"UI FIX ERROR · {exception.Message}";
+        }
+        finally
+        {
+            RefreshUiFixState();
+        }
+    }
+
+    private string? GetSelectedUiFixKey() =>
+        (UiFixPicker.SelectedItem as UiFixOption)?.Key;
 
     private async Task<(bool Succeeded, string Message)> ExecuteStreamEffectAsync(string effectId, string? bossName = null)
     {
@@ -1655,11 +1734,10 @@ public partial class MainWindow : Window
 
     private async void PlayGestureButton_Click(object sender, RoutedEventArgs e)
     {
-        if (GesturePicker.SelectedItem is not ComboBoxItem item ||
-            !int.TryParse(item.Tag?.ToString(), out var gestureId)) return;
+        if (GesturePicker.SelectedItem is not GestureOption gesture) return;
         PlayGestureButton.IsEnabled = false;
         DrawerStatusText.Text = "Sending gesture…";
-        try { DrawerStatusText.Text = await _cameraService.PlayGestureAsync(gestureId); }
+        try { DrawerStatusText.Text = await _cameraService.PlayGestureAsync(gesture.Id); }
         finally { PlayGestureButton.IsEnabled = true; }
     }
 

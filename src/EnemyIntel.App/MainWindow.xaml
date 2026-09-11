@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:local="clr-namespace:EnemyIntel.App"
         xmlns:shell="clr-namespace:System.Windows.Shell;assembly=PresentationFramework"
-        Title="EldenIntel" Width="882" Height="1124" MinWidth="820" MinHeight="760"
+        Title="EldenIntel" Width="960" Height="960" MinWidth="820" MinHeight="760"
         Background="{StaticResource CanvasBrush}" WindowStartupLocation="CenterScreen" WindowStyle="None" ToolTipOpening="MainWindow_ToolTipOpening">
   <shell:WindowChrome.WindowChrome>
     <shell:WindowChrome CaptionHeight="30" ResizeBorderThickness="6" GlassFrameThickness="0" CornerRadius="0"/>
@@ -55,7 +55,7 @@
       <EventSetter Event="Opened" Handler="HoverToolTip_Opened"/>
     </Style>
     <Style x:Key="CommandDeckTab" TargetType="Button">
-      <Setter Property="Height" Value="36"/><Setter Property="Margin" Value="2,0,0,0"/><Setter Property="Padding" Value="0"/>
+      <Setter Property="Height" Value="36"/><Setter Property="Margin" Value="1,0,0,0"/><Setter Property="Padding" Value="0"/>
       <Setter Property="Background" Value="#FFF4F4F5"/><Setter Property="Foreground" Value="#FF08090A"/><Setter Property="BorderBrush" Value="White"/><Setter Property="BorderThickness" Value="1"/>
       <Setter Property="FontSize" Value="20"/>
       <Setter Property="Template"><Setter.Value><ControlTemplate TargetType="Button">
@@ -118,14 +118,14 @@
       </StackPanel>
       <Grid Grid.Column="1" Margin="4,0,0,0" VerticalAlignment="Stretch">
         <Grid.ColumnDefinitions><ColumnDefinition Width="1.15*"/><ColumnDefinition Width="1.55*"/><ColumnDefinition Width="0.85*"/><ColumnDefinition Width="1.25*"/><ColumnDefinition Width="1.2*"/><ColumnDefinition Width="0.7*"/><ColumnDefinition Width="1.05*"/><ColumnDefinition Width="1.2*"/></Grid.ColumnDefinitions>
-        <Button x:Name="CameraDrawerTab" Grid.Column="0" Style="{StaticResource CommandDeckTab}" Click="CameraDrawerTab_Click" ToolTip="Camera"><local:TrackingText FontFamily="{StaticResource PanelFont}" FontSize="19" CharacterSpacing="0.45" Foreground="#08090A" Text="CAMERA"/></Button>
-        <Button x:Name="CamTrackDrawerTab" Grid.Column="1" Style="{StaticResource CommandDeckTab}" Click="CamTrackDrawerTab_Click" ToolTip="Camera Track"><local:TrackingText FontFamily="{StaticResource PanelFont}" FontSize="19" CharacterSpacing="0.45" Foreground="#08090A" Text="CAM TRACK"/></Button>
-        <Button x:Name="OptionsDrawerTab" Grid.Column="2" Style="{StaticResource CommandDeckTab}" Click="OptionsDrawerTab_Click" ToolTip="Tools"><local:TrackingText FontFamily="{StaticResource PanelFont}" FontSize="19" CharacterSpacing="0.45" Foreground="#08090A" Text="TOOLS"/></Button>
-        <Button x:Name="SpawnerDrawerTab" Grid.Column="3" Style="{StaticResource CommandDeckTab}" Click="SpawnerDrawerTab_Click" ToolTip="Enemy Spawner"><local:TrackingText FontFamily="{StaticResource PanelFont}" FontSize="19" CharacterSpacing="0.45" Foreground="#08090A" Text="SPAWNER"/></Button>
-        <Button x:Name="ControlDrawerTab" Grid.Column="4" Style="{StaticResource CommandDeckTab}" Click="ControlDrawerTab_Click" ToolTip="Character Control"><local:TrackingText FontFamily="{StaticResource PanelFont}" FontSize="18" CharacterSpacing="0.25" Foreground="#08090A" Text="CONTROL"/></Button>
-        <Button x:Name="PlaybackDrawerTab" Grid.Column="5" Style="{StaticResource CommandDeckTab}" Click="PlaybackDrawerTab_Click" ToolTip="Time Control"><local:TrackingText FontFamily="{StaticResource PanelFont}" FontSize="19" CharacterSpacing="0.45" Foreground="#08090A" Text="TIME"/></Button>
-        <Button x:Name="StreamDrawerTab" Grid.Column="6" Style="{StaticResource CommandDeckTab}" Click="StreamDrawerTab_Click" ToolTip="Twitch Stream Lab"><local:TrackingText FontFamily="{StaticResource PanelFont}" FontSize="18" CharacterSpacing="0.25" Foreground="#08090A" Text="STREAM"/></Button>
-        <Button x:Name="HotkeysDrawerTab" Grid.Column="7" Style="{StaticResource CommandDeckTab}" Click="HotkeysDrawerTab_Click" ToolTip="Hotkeys"><local:TrackingText FontFamily="{StaticResource PanelFont}" FontSize="18" CharacterSpacing="0.25" Foreground="#08090A" Text="HOTKEYS"/></Button>
+        <Button x:Name="CameraDrawerTab" Grid.Column="0" Style="{StaticResource CommandDeckTab}" Click="CameraDrawerTab_Click" ToolTip="Camera"><local:TrackingText FontFamily="{StaticResource PanelFont}" FontSize="15" CharacterSpacing="0.12" Foreground="#08090A" Text="CAMERA"/></Button>
+        <Button x:Name="CamTrackDrawerTab" Grid.Column="1" Style="{StaticResource CommandDeckTab}" Click="CamTrackDrawerTab_Click" ToolTip="Camera Track"><local:TrackingText FontFamily="{StaticResource PanelFont}" FontSize="15" CharacterSpacing="0.12" Foreground="#08090A" Text="CAM TRACK"/></Button>
+        <Button x:Name="OptionsDrawerTab" Grid.Column="2" Style="{StaticResource CommandDeckTab}" Click="OptionsDrawerTab_Click" ToolTip="Tools"><local:TrackingText FontFamily="{StaticResource PanelFont}" FontSize="15" CharacterSpacing="0.12" Foreground="#08090A" Text="TOOLS"/></Button>
+        <Button x:Name="SpawnerDrawerTab" Grid.Column="3" Style="{StaticResource CommandDeckTab}" Click="SpawnerDrawerTab_Click" ToolTip="Enemy Spawner"><local:TrackingText FontFamily="{StaticResource PanelFont}" FontSize="15" CharacterSpacing="0.12" Foreground="#08090A" Text="SPAWNER"/></Button>
+        <Button x:Name="ControlDrawerTab" Grid.Column="4" Style="{StaticResource CommandDeckTab}" Click="ControlDrawerTab_Click" ToolTip="Character Control"><local:TrackingText FontFamily="{StaticResource PanelFont}" FontSize="15" CharacterSpacing="0.12" Foreground="#08090A" Text="CONTROL"/></Button>
+        <Button x:Name="PlaybackDrawerTab" Grid.Column="5" Style="{StaticResource CommandDeckTab}" Click="PlaybackDrawerTab_Click" ToolTip="Time Control"><local:TrackingText FontFamily="{StaticResource PanelFont}" FontSize="15" CharacterSpacing="0.12" Foreground="#08090A" Text="TIME"/></Button>
+        <Button x:Name="StreamDrawerTab" Grid.Column="6" Style="{StaticResource CommandDeckTab}" Click="StreamDrawerTab_Click" ToolTip="Twitch Stream Lab"><local:TrackingText FontFamily="{StaticResource PanelFont}" FontSize="15" CharacterSpacing="0.12" Foreground="#08090A" Text="STREAM"/></Button>
+        <Button x:Name="HotkeysDrawerTab" Grid.Column="7" Style="{StaticResource CommandDeckTab}" Click="HotkeysDrawerTab_Click" ToolTip="Hotkeys"><local:TrackingText FontFamily="{StaticResource PanelFont}" FontSize="15" CharacterSpacing="0.12" Foreground="#08090A" Text="HOTKEYS"/></Button>
       </Grid>
     </Grid>
 
@@ -137,9 +137,10 @@
                  Stretch="UniformToFill"
                  StretchDirection="Both"
                  HorizontalAlignment="Center"
-                 VerticalAlignment="Center"
+                 VerticalAlignment="Top"
+                 Margin="0,0,0,46"
                  Opacity="0.86"/>
-          <Rectangle Height="330" VerticalAlignment="Bottom" IsHitTestVisible="False">
+          <Rectangle Height="270" VerticalAlignment="Bottom" IsHitTestVisible="False">
             <Rectangle.Fill>
               <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
                 <GradientStop Color="#00000000" Offset="0"/>
@@ -211,14 +212,21 @@
           <Button x:Name="NinjaSetButton" Height="42" Margin="0,8,0,0" Click="NinjaSetButton_Click" ToolTip="Apply the player-only Transmogrify Ninja Set appearance" Content="NINJA SET"/>
           <Button x:Name="ConfessorSetButton" Height="42" Margin="0,8,0,0" Click="ConfessorSetButton_Click" ToolTip="Apply the player-only Transmogrify Confessor Set appearance" Content="CONFESSOR SET"/>
           <Border Margin="0,12,0,0" BorderBrush="#45FFFFFF" BorderThickness="1,1,1,0"/>
+          <TextBlock Margin="0,10,0,5" Style="{StaticResource Eyebrow}" Text="DISPLAY  •  32:9"/>
+          <Grid>
+            <Grid.ColumnDefinitions><ColumnDefinition Width="34"/><ColumnDefinition/></Grid.ColumnDefinitions>
+            <CheckBox x:Name="UiFixEnabledCheckBox" Width="22" Height="22" VerticalAlignment="Center" HorizontalAlignment="Left"
+                      Checked="UiFixEnabledCheckBox_Changed" Unchecked="UiFixEnabledCheckBox_Changed"
+                      ToolTip="Enable or disable the selected 32:9 interface fix"/>
+            <ComboBox x:Name="UiFixPicker" Grid.Column="1" Style="{StaticResource LightComboBoxStyle}" Height="38" Padding="8,0"
+                      DisplayMemberPath="Display" SelectionChanged="UiFixPicker_SelectionChanged"/>
+          </Grid>
+          <TextBlock x:Name="UiFixStatusText" Margin="34,5,0,0" Foreground="{StaticResource MutedBrush}" FontSize="10" TextWrapping="Wrap"
+                     Text="Select a fix. Changes apply on the next Elden Ring launch."/>
+          <Border Margin="0,12,0,0" BorderBrush="#45FFFFFF" BorderThickness="1,1,1,0"/>
           <TextBlock Margin="0,10,0,5" Style="{StaticResource Eyebrow}" Text="ANIMATION LAB  •  EXPERIMENTAL"/>
-          <ComboBox x:Name="GesturePicker" Style="{StaticResource LightComboBoxStyle}" Height="38" Padding="8,0" SelectedIndex="0">
-            <ComboBoxItem Tag="7" Content="WAVE"/><ComboBoxItem Tag="23" Content="BECKON / TAUNT MOD"/>
-            <ComboBoxItem Tag="22" Content="POINT DOWN / FINGER MOD"/><ComboBoxItem Tag="70" Content="JUMP FOR JOY"/>
-            <ComboBoxItem Tag="71" Content="TRIUMPHANT DELIGHT"/><ComboBoxItem Tag="72" Content="FANCY SPIN"/>
-            <ComboBoxItem Tag="73" Content="FINGER SNAP"/><ComboBoxItem Tag="90" Content="PATCHES CROUCH"/>
-            <ComboBoxItem Tag="92" Content="REST"/><ComboBoxItem Tag="103" Content="ERUDITION"/>
-          </ComboBox>
+          <ComboBox x:Name="GesturePicker" Style="{StaticResource LightComboBoxStyle}" Height="38" Padding="8,0"
+                    DisplayMemberPath="Display"/>
           <Button x:Name="PlayGestureButton" Height="38" Margin="0,7,0,0" Click="PlayGestureButton_Click" ToolTip="Trigger the selected in-game gesture. Custom replacements work when their animation mod is installed." Content="PLAY GESTURE"/>
           <TextBlock x:Name="DrawerStatusText" Margin="0,9,0,15" Foreground="{StaticResource MutedBrush}" FontSize="10" TextWrapping="Wrap" Text="Open the drawer while Elden Ring is running."/>
           <TextBlock Style="{StaticResource Eyebrow}" Text="SHORTCUTS"/>

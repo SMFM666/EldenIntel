@@ -2914,17 +2914,21 @@ internal sealed class PracticeToolBridge : IDisposable
     private const string SteadyPlayerKey = "STEADY PLAYER";
     private const float SteadyPlayerPoise = 1_000_000f;
 
-    private const ulong ChrDbgFlags = 0x3D6619F;
+    // Elden Ring 2.7.x debug/runtime bases. These moved by roughly 0x4000 in
+    // 2.7.0; keeping them behind the version gate below prevents stale writes.
+    private const ulong ChrDbgFlags = 0x3D6A210;
     private const string CsRegulationManagerPattern =
         "48 8B 0D ?? ?? ?? ?? 48 85 C9 74 0B 4C 8B C0 48 8B D7";
-    private const ulong DamageCtrl = 0x3D66378;
-    private const ulong GroupMask = 0x3B33CFF;
-    private const ulong HitInsHitboxOffset = 0x3D6A0EC;
-    private const ulong WorldChrMan = 0x3D65F88;
-    private const ulong WorldChrManDbg = 0x3D66198;
+    private const ulong DamageCtrl = 0x3D6A3E8;
+    // Existing flag definitions are intentionally indexed from one byte before
+    // GroupMask (GEOM 07 uses the zero offset).
+    private const ulong GroupMask = 0x3B37D0F;
+    private const ulong HitInsHitboxOffset = 0x3D6E15C;
+    private const ulong WorldChrMan = 0x3D69FF8;
+    private const ulong WorldChrManDbg = 0x3D6A208;
     private const ulong DbgEventManOff = 0x3D67FF8;
     private const ulong FuncCheckGraces = 0x3D6CFC0;
-    private const ulong TargetingDebugDraw = 0x3D6226B;
+    private const ulong TargetingDebugDraw = 0x3D662C9;
     private const ulong RegulationManagerParamMasterOffset = 0x18;
     private const ulong ParamEntryNameOffset = 0x18;
     private const ulong ParamEntryNameLengthOffset = 0x28;
@@ -3415,8 +3419,8 @@ internal sealed class PracticeToolBridge : IDisposable
     {
         FileVersionInfo version = FileVersionInfo.GetVersionInfo(memory.Process.MainModule?.FileName ?? string.Empty);
         bool supported = version.FileMajorPart == 2 &&
-            ((version.FileMinorPart == 6 && version.FileBuildPart is >= 0 and <= 2) ||
-             (version.FileMinorPart == 7 && version.FileBuildPart == 0));
+            version.FileMinorPart == 7 &&
+            version.FileBuildPart is 0 or 1;
         if (!supported)
         {
             throw new NotSupportedException(

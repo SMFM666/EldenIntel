@@ -939,14 +939,11 @@ void Freecam::ApplyActiveView(GameData::GameRend* gameRend) {
                 // controls and makes the engine's render/update focus cone
                 // follow what the freecam is visibly looking at.
                 const EulerAngles& rotation = freeCamera.GetEuler();
-                // The native follow camera's yaw convention is 180 degrees
-                // opposite the debug camera basis. Convert at the ownership
-                // boundary so disabling freecam retains the visible heading
-                // instead of snapping the player camera around backwards.
-                constexpr float Pi = 3.14159265358979323846f;
-                float nativeYaw = rotation.yaw + Pi;
-                if (nativeYaw > Pi) nativeYaw -= 2.0f * Pi;
-                position[0xB4 / sizeof(float)] = nativeYaw;
+                // Both camera objects expose the same world-facing matrix
+                // basis here. Preserve the exact visible yaw. Adding PI at
+                // this bridge produced a reproducible 180-degree snap on
+                // both activation and release.
+                position[0xB4 / sizeof(float)] = rotation.yaw;
                 position[0xB8 / sizeof(float)] = rotation.pitch;
                 positionCave.SetFrozen(true);
                 applied = true;
